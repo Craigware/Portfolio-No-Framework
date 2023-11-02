@@ -30,7 +30,7 @@ export function EraseWordEffect(element, word, typeSpeed=100, random=false){
     } else {
       // 30% chance to create a highlight and delete effect
       const oldBackgroundColor = element.style.backgroundColor;
-      element.style.backgroundColor = "var(--light_mode_highlight)";
+      element.style.backgroundColor = "var(--highlight_color)";
       await delay(typeSpeed * (word.length / 2));
 
       element.innerHTML = "";

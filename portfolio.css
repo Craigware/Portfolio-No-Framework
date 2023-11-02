@@ -5,9 +5,15 @@
   padding: 0;
 }
 
-body {
-  --highlight_color: blue;
-  --background_color: ;
+:root {
+  --background_color: white;
+  --text_color: black;
+  --foreground_color: ;
+  --shadow_color: ;
+  --highlight_color: #ffff99;
+
+  background-color: var(--background_color);
+  color: var(--text_color);
 }
 
 .navbar-item {
@@ -37,24 +43,17 @@ nav {
   transition:
     left .5s,
     background-color 1s;
+  left: 0;
+  background-color: var(--highlight_color);
   width: 1.3rem;
   height: 100%;
   border-radius: 100%;
   position: absolute;
 }
 
-.light-switch-pivot.dark-mode {
-  background-color: var(--highlight_color);
-  left: 50%;
-}
-
-.light-switch-pivot.light-mode{
-  background-color: var(--highlight_color);
-  left: 0;
-}
-
 .welcome-screen{
   position: relative;
+  overflow: hidden;
   height: 100vh;
 }
 
@@ -75,7 +74,7 @@ nav {
   background-color: black;
   border-radius: 100%;
   overflow: hidden;
-  
+
   /* this makes sense to me because its like setting the anchor point to the middle of the div */
   bottom: 125px;
   right: 125px;

@@ -1,32 +1,31 @@
 // Light Mode Related
+const lightModeTheme = {
+  "--highlight_color": "#ffff99",
+  "--background_color": "white",
+  "--text_color": "black",
+};
+const darkModeTheme = {
+  "--highlight_color": "#99ccff",
+  "--background_color": "black",
+  "--text_color": "white",
+};
+
 export default function LightSwitch(){
-  const lightSwitch = document.getElementById("Light-Switch")
-  const status = lightSwitch.className.includes("light-mode");
-  AlterAllElementsLightMode(!status);
-  return 0;
-}
+  const lightSwitch = document.getElementById("Light-Switch");
+  window.lightMode = !window.lightMode;
 
-function AlterAllElementsLightMode(lightsOn){
-  let oldTag;
-  let newTag;
-  const pageElements = document.body.getElementsByTagName("*");
+  if (window.lightMode){
+    lightSwitch.style.left = "50%";
 
-  if (lightsOn){
-    // turns elements to light mode
-    oldTag = "dark-mode";
-    newTag = "light-mode";
+    for (let property in darkModeTheme) {
+      document.documentElement.style.setProperty(property, darkModeTheme[property]);
+    }
   } else {
-    // turns elements to dark mode
-    oldTag = "light-mode";
-    newTag = "dark-mode";
-  }
-  document.body.style.setProperty("--highlight_color", "red");
-  for (let element in pageElements){
-    try{
-      pageElements[element].classList.add(newTag);
-      pageElements[element].classList.remove(oldTag);
-    } catch {}
-  }
+    lightSwitch.style.left = "0";
 
+    for (let property in lightModeTheme) {
+      document.documentElement.style.setProperty(property, lightModeTheme[property]);
+    }
+  }
   return 0;
 }
