@@ -1,0 +1,83 @@
+* {
+  margin: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2.5rem;
+  padding: 0;
+}
+
+body {
+  --highlight_color: blue;
+  --background_color: ;
+}
+
+.navbar-item {
+  display: inline-block;
+  padding: .25rem;
+}
+
+nav {
+  padding: .5rem;
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  height: 2rem;
+}
+
+.light-switch{
+  background-color: grey;
+  border: solid black 3px;
+  width: 2.5rem;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: inset 0 0 20px var(--shadow_color);
+}
+
+.light-switch-pivot {
+  transition:
+    left .5s,
+    background-color 1s;
+  width: 1.3rem;
+  height: 100%;
+  border-radius: 100%;
+  position: absolute;
+}
+
+.light-switch-pivot.dark-mode {
+  background-color: var(--highlight_color);
+  left: 50%;
+}
+
+.light-switch-pivot.light-mode{
+  background-color: var(--highlight_color);
+  left: 0;
+}
+
+.welcome-screen{
+  position: relative;
+  height: 100vh;
+}
+
+.welcome-screen > div {
+  position: absolute;
+}
+
+.welcome-screen div:first-child{
+  margin: 0;
+  top: 40%;
+  left: 30%;
+  
+}
+
+.circle {
+  height: 250px;
+  width: 250px;
+  background-color: black;
+  border-radius: 100%;
+  overflow: hidden;
+  
+  /* this makes sense to me because its like setting the anchor point to the middle of the div */
+  bottom: 125px;
+  right: 125px;
+  transform: translate(50%, 50%);
+}

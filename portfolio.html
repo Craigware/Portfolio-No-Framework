@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="portfolio.css">
+  <script src="portfolio.js" type="module"></script>
+  <title>My Awesome Portfolio Attempt 57</title>
+</head>
+<body onload="AlterJobTitle(typeSpeed=100,eraseSpeed=100,delayBetweenTitles=4000);">
+  <main>
+    <!-- Going to make a navbar here eventually -->
+    <nav id="Navigation">
+      <a href="#About-Me" class="navbar-item">About-Me</a>
+      <a href="#Education" class="navbar-item">Education</a>
+      <a href="#Projects" class="navbar-item">Projects</a>
+      <a href="#General-Information" class="navbar-item">Contact Information</a>
+      <div onclick="LightSwitch();" class="light-switch">
+        <div id="Light-Switch" class="light-switch-pivot light-mode" />
+      </div>
+    </nav>
+
+    <div id="Hero" class="welcome-screen">
+      <div>
+        <h1>Hello, My name is Craig Johnson</h1>
+        <h1>I am a <span id="Alternating-Job-Title"></span></h1>
+      </div>
+    </div>
+    <div id="About-Me">
+      <h1>About me</h1>
+      <p>
+        I am an artist turned web developer. I started taking coding more
+        seriously when I was in college because I wanted to make my artwork interactive. Front-end development and
+        game development has been my favorite outlets for such. Through my experience learning I have come to find
+        out I very much enjoy all aspects of software development. The creativity and problem solving of front-end
+        is very engaging for me while the organization and management of data has proven to be quite satisfying in 
+        the back-end.
+      </p>
+      <p>
+        I am currently looking for an entry or junior level position in either front-end development, back-end development
+        or full-stack development. My favorite frameworks to use have been React for front-end, and FastAPI or Django for back-end.
+        Although I do love learning different technologies, I currently have specific interest in learning ASP.NET due to C# being
+        my favorite programming language. 
+      </p>
+
+
+      <h1>Technical Skills</h1>
+      <h3>Languages</h3>
+      <ul>
+        <li>Javascript</li>
+        <li>Python</li>
+        <li>C Sharp</li>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>SQL</li>
+      </ul>
+
+      <h3>Front-End</h3>
+      <ul>
+        <li>React</li>
+        <li>DOM Manipulation</li>
+        <li>Redux</li>
+        <li>Web Sockets</li>
+        <li>TailwindCSS</li>
+        <li>SASS</li>
+        <li>Bootstrap</li>
+      </ul>
+
+      <h3>Back-End</h3>
+      <ul>
+        <li>Django</li>
+        <li>FastAPI</li>
+        <li>RabbitMQ</li>
+        <li>MongoDB</li>
+        <li>PostgreSQL</li>
+      </ul>
+
+      <h3>Collaboration</h3>
+      <ul>
+        <li>Jira</li>
+        <li>Git</li>
+        <li>Docker</li>
+        <li>Microservices</li>
+        <li>Monoliths</li>
+        <li>Domain Driven Design</li>
+        <li>Event Sourcing</li>
+        <li>Message Passing</li>
+        <li>Project Reconstruction</li>
+      </ul>
+
+      <h2>Soft Skills</h2>
+      <ul>
+        <li>High Attention to Detail</li>
+        <li>Organization</li>
+        <li>Adaptability</li>
+        <li>Problem Solving</li>
+        <li>Creativity</li>
+        <li>Individually Motivated</li>
+        <li>Project Management</li>
+      </ul>
+
+      <!-- <h2>Interests</h2>
+      <p>List of interests</p> -->
+    </div>
+
+    <div id="Education">
+      <h1>Education</h1>
+      <h2>Hack Reactor</h2>
+      <p>I took the Galvanize Hack Reactor 19 Week Javascript and Python Development Boot Camp in 2023, and I loved my experience.
+        I worked in a large class of around 70 like minded individuals with 9 different mentors to learn a lot about software development.
+        During my boot camp I-
+      </p>
+      <ul>
+        <li>Created full-stack applications using React, Django, and FastAPI to create web projects for task tracking, recipe sharing, car dealership management, and location based photo sharing.</li>
+        <li>Used Docker and Git to allow for seamless contributions to projects between different machines. Focused on concise commit messages and branching to ensure a proper productive workflow.</li>
+        <li>Used relational and non relation databases in order to store data. Used Django's default database for 30% of my projects working with the in system migrations, 20% using SQL and Postgres with a detached database, and 50% using MongoDB.</li>
+      </ul>
+
+      <h2>Palm Beach State</h2>
+      <p>When I first finished high school I immediately started college with a focus on graphic design at Palm Beach State. Unfortunately my
+        time there was cut short by the Covid pandemic but I enjoyed my time all the same. I-
+      </p>
+      <ul>
+        <li>Worked on graphics using Adobe Illustrator and Photoshop centered around the protection of environments and what part specific 
+          animals play in ecosystems.
+        </li>
+        <li>Developed graphics for novels of fabricated origins, my favorites consisting of novels focusing on traveling around different 
+          countries, Japan, Norway, Etc.. using Adobe Illustrator and Photoshop.
+        </li>
+        <li>Used color theory and framing strategies to convey emotion through graphics. My strategies include, the rule of thirds, 
+          analogous color theory, and Ambiguous imagery. 
+        </li>
+      </ul>
+    </div>
+
+    <div id="Projects">
+      <!-- I want to have a short description of the project. A couple images of them, and a link to their repos. -->
+      <h1>Projects</h1>
+      <h4>Gold'n Hour</h4>
+      <p>Gold'n Hour is a photo sharing social media that focuses around the specific location where the photo was taken.
+        With plans to gather crowd sourced data at the locations, it is a photographer's dream.
+      </p>
+      <h5>Technologies</h5>
+      <ul>
+        <li>React</li>
+        <li>FastAPI</li>
+        <li>TailwindCSS</li>
+        <li>Javascript</li>
+        <li>Python</li>
+        <li>Framer Motion</li>
+        <li>JSX</li>
+      </ul>
+
+      <h4>Task Tracker</h4>
+      <p>Task Tracker is my generic task tracking applications for not only individuals but also groups. With progress bars
+        and due dates Task Tracker is a simplistic application for a simple goal.
+      </p>
+      <h5>Technologies</h5>
+      <ul>
+        <li>Django</li>
+        <li>Python</li>
+        <li>HTML</li>
+        <li>CSS</li>
+      </ul>
+
+      <h4>Car Squared</h4>
+      <p>Car Squared is a car dealership application for the management of employees, customers, and car inventory.
+        It is used to track different employees sales, customer appointments, and more.
+      </p>
+      <h5>Technologies</h5>
+      <ul>
+        <li>Django</li>
+        <li>React</li>
+        <li>Bootstrap</li>
+        <li>Javascript</li>
+        <li>Python</li>
+        <li>JSX</li>
+      </ul>
+
+      <h1>W.I.P Projects</h1>
+      <h4>Unnamed WIP RPG</h4>
+      <h4>Complet</h4>
+    </div>
+
+    <div id="General-Information">
+      <h1>General Information</h1>
+      <h2>Resume</h2>
+      <p>Download</p>
+
+      <h2>Contact Information</h2>
+      <p>In Page Contact</p>
+      <p>+1(561) 281-7485</p>
+      <p>CraigJArt@gmail.com</p>
+      <a href="https://www.linkedin.com/in/craig-johnson-jr/" target="_blank">LinkedIn</p>
+
+      <!-- <h2>Social Media</h2>
+      <p>Youtube</p>
+      <p>Twitter</p> -->
+      
+    </div>
+  </main>
+</body>
+<footer>
+
+</footer>
+</html>
