@@ -53,6 +53,7 @@ nav {
 
 .welcome-screen{
   position: relative;
+  background-color: lightblue;
   overflow: hidden;
   height: 100vh;
 }

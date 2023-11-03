@@ -6,6 +6,11 @@ import AlterJobTitle, { TypeWordEffect } from "./source/typeeffect.js";
 window.AlterJobTitle = AlterJobTitle;
 window.TypeWordEffect = TypeWordEffect;
 
+const gravity = 0.3;
+const windResistance = 0;
+const fps = 60;
+const ballRefreshRate = 1000/fps;
+
 class Vector2{
   x = Number;
   y = Number;
@@ -28,12 +33,14 @@ class Vector2{
     }
 
     if (dimensions.includes("x")){
-      this.x = Math.floor(Math.random() * ((max) - min + 1) + min);
+      this.x = Math.random() * ((max) - min + 1) + min;
     }
 
     if (dimensions.includes("y")){
-      this.y = Math.floor(Math.random() * ((max) - min + 1) + min);
+      this.y = Math.random() * ((max) - min + 1) + min;
     }
+
+    return this
   }
 
   RandomizeY(min, max){
@@ -50,17 +57,22 @@ class Material{
   rotationSpeed = Number;
   weight = Number;
   bounciness = Number;
+  friction = Number;
   
-  constructor(materialName, rotationSpeed=1, weight=0.5, bounciness=0.5){
+  constructor(materialName, rotationSpeed=1, weight=0.5, bounciness=0.5, friction=0.01){
     this.weight = weight;
     this.bounciness = bounciness;
     this.materialName = materialName;
     this.rotationSpeed = rotationSpeed;
+    this.friction = friction;
   }
 }
 
 const materials = [
-  new Material("Bouncy", 1, 0.5, 1)
+  new Material("Bouncy", 1, 0.5, 0.5),
+  new Material("Super-Light", 1, 0.25, 1),
+  new Material("Heavy", 1, 1, 0),
+  new Material("Light-But-Not-Bouncy", 1, 0.4, 0)
 ]
 
 
@@ -81,48 +93,30 @@ const technologies = [
   new Technology("Javascript", "./source/images/javascript_logo.jpg"),
   new Technology("Python", "./source/images/python_logo.png", new Vector2(0, 50)),
   new Technology("CSharp", "./source/images/csharp_logo.png"),
-  // new Technology("React", ""),
-  // new Technology("Django", ""),
-  // new Technology("TailwindCSS", ""),
-  // new Technology("SASS", ""),
+  new Technology("React", "./source/images/react_logo.jpg"),
+  new Technology("Django", "./source/images/django_logo.png"),
+  // new Technology("TailwindCSS", "./source/images/tailwindcss_logo.jpg"),
+  // new Technology("SASS", "./source/images/sass_logo.png"),
   // new Technology("Docker", ""), 
   // new Technology("Git", ""),
   // new Technology("Bootstrap", ""),
-
 ]
 
 
 class TechnologyBall{
   technology = Technology;
   material = Material;
-  appliedForce = Vector2;
-  target = Vector2;
   position = Vector2;
-  updateSpeed = Vector2;
+  anchorOffset = Vector2;
   element = Element;
 
-  constructor(technology, material, appliedForce=new Vector2(0.5, 0.5), position){
+  constructor(technology, material, position){
     this.technology = technology;
     this.material = material;
-    this.appliedForce = appliedForce;
     this.position = position;
-    // 1000 = max total time to reach top
-    this.updateSpeed.x = this.material.weight * (appliedForce.x);
-    this.updateSpeed.y = this.material.weight * (appliedForce.y);
   }
 
   DecideTrajectory(){
-    // need to decide what y the arch flops
-    // peak y = y + (y * applied force) y = 5 + (5 * 1) peak y = 10
-    // then we need to determine how fast the ball will move toward the peak this will probably be based on its material
-    // then we need to determine how fast the ball will fall to the floor
-    // then we need to determine the next peak y and how fast that bounce will be
-
-    const targetY = this.position.y + Math.abs(this.position.y * this.appliedForce.y) + this.appliedForce.y;
-    const targetX = this.position.x + Math.abs(this.position.x * this.appliedForce.x) + this.appliedForce.x;
-    
-    this.target = new Vector2(targetX, targetY);
-
     return this.target;
   }
 
@@ -138,41 +132,72 @@ class TechnologyBall{
     technologyGFX.alt = this.technology.technologyName + " Icon";
   
     technologyGFX.style.cssText = `
-      transition:
-        right ${this.updateSpeed.x}s,
-        bottom ${this.updateSpeed.y}s;
-  
       border-radius: ${borderRadius}%;
       height: ${imageSize}px;
       width: ${imageSize}px;
       position: absolute;
+      bottom: 110%;
+      right: -10%;
       object-fit: cover;
       object-position: ${this.technology.imageOffsets.y}% ${this.technology.imageOffsets.x}%;
-      right: calc(${this.position.x}% + ${imageSize/2}px);
-      bottom: calc(${this.position.y}% - ${imageSize/2}px);
       transform: translate(50%,50%);
     `;
-  
+    
     this.element = technologyGFX;
+    this.anchorOffset = new Vector2(
+      parseInt(this.element.style.width)/2,
+      parseInt(this.element.style.height)/2
+    )
+
     return technologyGFX;
   }
 
 
-  async UpdatePosition(element, imageSize=64, targets){
-    if (targets.x >= 50){
-      element.style.right = `calc(${targets.x}% - ${imageSize/2}px)`;
-    } else {
-      element.style.right = `calc(${targets.x}% + ${imageSize/2}px)`;
+  async UpdatePosition(element, appliedForce){
+    if (!this.velocity){
+      this.velocity = new Vector2(appliedForce.x, appliedForce.y);
     }
+    this.position.y = (this.position.y + appliedForce.y);
+    this.position.x = (this.position.x + appliedForce.x);
+    appliedForce.y -= gravity * this.material.weight;
+    appliedForce.x -= windResistance;
   
-    if (targets.y >= 50){
-      element.style.bottom = `calc(${targets.y}% - ${imageSize/2}px)`;
-    } else {
-      element.style.bottom = `calc(${targets.y}% + ${imageSize/2}px)`;
+    if (this.position.y <= 0){
+      this.position.y = 0;
+      appliedForce.y = this.velocity.y * this.material.bounciness;
+      this.velocity.y = appliedForce.y;
+
+
+      if (appliedForce.x > 0){
+        if (appliedForce.x - this.material.friction < 0){
+          appliedForce.x = 0;
+        } else {
+          appliedForce.x -= this.material.friction;
+        }
+      } else if (appliedForce.x > 0) {
+        if (appliedForce.x + this.material.friction < 0){
+          appliedForce.x = 0;
+        } else {
+          appliedForce.x += this.material.friction;
+        }
+      }
     }
-    
-    this.position = targets;
-    await delay(this.updateSpeed.x);
+
+    if(appliedForce.x <= 0){
+      console.log("The ball ran out of horizontal force");
+      element.parentNode.removeChild(element);
+      return 0;
+    }
+    if(parseInt(element.style.right) >= 120 || element.style.right <= 20){
+      console.log("The ball ran off the left of the screen");
+      element.parentNode.removeChild(element);
+      return 0
+    }
+    element.style.right = `calc(${this.position.x}% + ${this.anchorOffset.x}px)`;
+    element.style.bottom = `calc(${this.position.y}% + ${this.anchorOffset.y}px)`;
+
+    await delay(ballRefreshRate);
+    this.UpdatePosition(element, appliedForce);
   }
 }
 
@@ -182,16 +207,16 @@ async function BounceElement(parent){
   let randomMaterialIndex = Math.floor(Math.random() * ((materials.length - 1) - 0 + 1)) + 0
   const randomMaterial = materials[randomMaterialIndex];
   const randomTechnology = technologies[randomTechnologyIndex];
-  
+  const randomForce = new Vector2(0,0)
+  randomForce.RandomizeX(0.1,1);
+  randomForce.RandomizeY(0.2,2);
 
-  const TechBall = new TechnologyBall(randomTechnology, randomMaterial, new Vector2(20, 20), new Vector2(0, 0));
+  const TechBall = new TechnologyBall(randomTechnology, randomMaterial, new Vector2(0, 0));
+
   TechBall.CreateTechnologyGFX();
   parent.appendChild(TechBall.element);
-  await delay(200);
   TechBall.DecideTrajectory();
-  TechBall.UpdatePosition(TechBall.element, 64, TechBall.DecideTrajectory());
-  await delay(5000);
+  TechBall.UpdatePosition(TechBall.element, randomForce);
 }
-
 
 BounceElement(document.getElementById("Hero"));
