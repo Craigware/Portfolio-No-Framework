@@ -82,11 +82,18 @@ nav {
 }
 
 .ball-creation-form {
-  transition: height 2s;
   width: 15%;
-  margin: 3%;
-  padding: 3%;
+  height: auto;
+  margin: 2%;
+  padding: 1%;
   background-color: pink;
+  border-radius: 10px 10px 0px 0px;
+  overflow: hidden;
+}
+
+.ball-creation-form h3{
+  margin: 10px -2%;
+  border-bottom: solid black 1px;
 }
 
 .ball-creation-form > form {
