@@ -1,11 +1,11 @@
 import delay from "./timing.js";
 
-const gravity = 0.3;
-const windStrength = 0;
+let gravity = 0.3;
+let windStrength = 0;
 const fps = 60;
 const ballRefreshRate = 1000/fps;
 
-class Vector2{
+export class Vector2{
   x = Number;
   y = Number;
 
@@ -48,7 +48,7 @@ class Vector2{
   }
 }
 
-class Material{
+export class Material{
   materialName = String;
   weight = Number;
   bounciness = Number;
@@ -62,7 +62,7 @@ class Material{
   }
 }
 
-class Technology{
+export class Technology{
   technologyName = String;
   imagePath = String;
   imageOffsets = Object;
@@ -156,7 +156,6 @@ class TechnologyBall{
         appliedForce.y = this.velocity.y * this.material.bounciness;
         this.velocity.y = appliedForce.y;
 
-
         if (appliedForce.x > 0){
           if (appliedForce.x - this.material.friction < 0){
             appliedForce.x = 0;
@@ -198,23 +197,54 @@ const materials = [
   new Material("silly name", 0.29, 0.69, 0)
 ]
 
-export default async function StartBouncing(parent){
+export function CreateBall(parent, random, material, appliedForce){
   if (document.visibilityState === "visible"){
+    let startPosition = new Vector2(0,0);
     let randomTechnologyIndex = Math.floor(Math.random() * ((technologies.length - 1) - 0 + 1)) + 0
-    let randomMaterialIndex = Math.floor(Math.random() * ((materials.length - 1) - 0 + 1)) + 0
-    const randomMaterial = materials[randomMaterialIndex];
-    const randomTechnology = technologies[randomTechnologyIndex];
-    const randomForce = new Vector2(0,0)
-    randomForce.RandomizeX(0.1,2);
-    randomForce.RandomizeY(0.2,5);
+    let technology = technologies[randomTechnologyIndex];
+    if (random){
+      
+      let randomMaterialIndex = Math.floor(Math.random() * ((materials.length - 1) - 0 + 1)) + 0
+      material = materials[randomMaterialIndex];
+      
+      appliedForce = new Vector2(0,0);
+      appliedForce.RandomizeX(0.1,2);
+      appliedForce.RandomizeY(0.2,5);
+    }
 
-    const TechBall = new TechnologyBall(randomTechnology, randomMaterial, new Vector2(-10, -10));
+    const TechBall = new TechnologyBall(technology, material, startPosition);
 
     TechBall.CreateTechnologyGFX();
     parent.appendChild(TechBall.element);
-    TechBall.UpdatePosition(TechBall.element, new Vector2(.5, 5), 10);
+    TechBall.UpdatePosition(TechBall.element, appliedForce, 10);
   }
+}
 
-  await delay(500);
+export function CreateBallFromForm(event){
+  event.preventDefault();
+  const materialName = document.getElementById("Material-Name-Input").value;
+  const materialWeight = document.getElementById("Material-Weight-Input").value / 100;
+  const materialBounce = document.getElementById("Material-Bounce-Input").value / 100;
+  const materialFriction = document.getElementById("Material-Friction-Input").value / 1000;
+  const x = document.getElementById("Applied-Force-X").value / 10;
+  const y = document.getElementById("Applied-Force-Y").value / 10;
+
+  let material = new Material(materialName, materialWeight, materialBounce, materialFriction);
+  let appliedForce = new Vector2(x,y);
+
+  CreateBall(document.getElementById("Hero"), false, material, appliedForce);
+};
+
+export function AlterWorldEffects(event){
+  event.preventDefault();
+  const updatedGravity = document.getElementById("Gravity").value / 100;
+  const updatedWindStrength = document.getElementById("Wind-Strength").value / 10000;
+  windStrength = updatedWindStrength;
+  gravity = updatedGravity;
+}
+
+export default async function StartBouncing(parent){
+  CreateBall(parent, true);
+  await delay(5000);
   StartBouncing(parent);
 }

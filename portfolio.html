@@ -25,6 +25,30 @@
         <h1>Hello, My name is Craig Johnson</h1>
         <h1>I am a <span id="Alternating-Job-Title"></span></h1>
       </div>
+      <div onclick="AlterBallFormVisibility()" id="Ball-Forms-Holder" class="ball-creation-form">
+        <form id="World-Settings">
+          <label for="materialBounciness">Gravity</label>
+          <input id="Gravity" type="range" min="0" max="100" value="30"/>
+          
+          <label for="materialBounciness">Wind Strength</label>
+          <input id="Wind-Strength" type="range" min="-100" max="100" value="0"/>
+        </form>
+        <form id="Create-A-Ball">
+          <label for="materialName">Material Name</label>
+          <input id="Material-Name-Input" name="materialName" type="text" />
+          <label for="materialWeight">Material Weight</label>
+          <input id="Material-Weight-Input" type="range" min="1" max="200" value="50"/>
+          <label for="materialBounciness">Material Bounciness</label>
+          <input id="Material-Bounce-Input" type="range" min="0" max="100" value="30"/>
+          <label for="materialFriction">Material Friction</label>
+          <input id="Material-Friction-Input" type="range" min="0" max="100" value="1"/>
+          <label for="appliedForceX">Applied Force X</label>
+          <input id="Applied-Force-X" type="range" min="0" max="100" value="0"/>
+          <label for="appliedForceY">Applied Force Y</label>
+          <input id="Applied-Force-Y" type="range" min="0" max="100" value="0"/>
+          <button>Create</button>
+        </form>
+      </div>
     </div>
     <div id="About-Me">
       <h1>About me</h1>

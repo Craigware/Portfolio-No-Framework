@@ -66,7 +66,6 @@ nav {
   margin: 0;
   top: 40%;
   left: 30%;
-  
 }
 
 .circle {
@@ -80,4 +79,20 @@ nav {
   bottom: 125px;
   right: 125px;
   transform: translate(50%, 50%);
+}
+
+.ball-creation-form {
+  transition: height 2s;
+  width: 15%;
+  margin: 3%;
+  padding: 3%;
+  background-color: pink;
+}
+
+.ball-creation-form > form {
+}
+
+.ball-creation-form > form > input, label {
+  display: block;
+  width: 100%;
 }
