@@ -245,6 +245,6 @@ export function AlterWorldEffects(event){
 
 export default async function StartBouncing(parent){
   CreateBall(parent, true);
-  await delay(5000);
+  await delay(109);
   StartBouncing(parent);
 }
