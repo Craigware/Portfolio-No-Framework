@@ -1,0 +1,98 @@
+* {
+  margin: 0;
+  scroll-behavior: smooth;
+  scroll-padding-top: 2.5rem;
+  padding: 0;
+}
+
+:root {
+  --background_color: white;
+  --text_color: black;
+  --foreground_color: ;
+  --shadow_color: ;
+  --highlight_color: #ffff99;
+
+  background-color: var(--background_color);
+  color: var(--text_color);
+}
+
+.navbar-item {
+  display: inline-block;
+  padding: .25rem;
+}
+
+nav {
+  padding: .5rem;
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  height: 2rem;
+}
+
+.light-switch{
+  background-color: grey;
+  border: solid black 3px;
+  width: 2.5rem;
+  border-radius: 30px;
+  position: relative;
+  cursor: pointer;
+  box-shadow: inset 0 0 20px var(--shadow_color);
+}
+
+.light-switch-pivot {
+  transition:
+    left .5s,
+    background-color 1s;
+  left: 0;
+  background-color: var(--highlight_color);
+  width: 1.3rem;
+  height: 100%;
+  border-radius: 100%;
+  position: absolute;
+}
+
+.welcome-screen{
+  position: relative;
+  background-color: lightblue;
+  overflow: hidden;
+  height: 100vh;
+}
+
+.welcome-screen > div {
+  position: absolute;
+}
+
+.welcome-screen div:first-child{
+  margin: 0;
+  top: 40%;
+  left: 30%;
+}
+
+.circle {
+  height: 250px;
+  width: 250px;
+  background-color: black;
+  border-radius: 100%;
+  overflow: hidden;
+
+  /* this makes sense to me because its like setting the anchor point to the middle of the div */
+  bottom: 125px;
+  right: 125px;
+  transform: translate(50%, 50%);
+}
+
+.ball-creation-form {
+  transition: height 2s;
+  width: 15%;
+  margin: 3%;
+  padding: 3%;
+  background-color: pink;
+}
+
+.ball-creation-form > form {
+}
+
+.ball-creation-form > form > input, label {
+  display: block;
+  width: 100%;
+}
