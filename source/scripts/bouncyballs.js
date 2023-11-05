@@ -62,7 +62,7 @@ export class Material{
   }
 }
 
-export class Technology{
+class Technology{
   technologyName = String;
   imagePath = String;
   imageOffsets = Object;
@@ -194,7 +194,7 @@ export const materials = [
   new Material("silly name", 0.3, 0.7, 0)
 ]
 
-export function CreateBall(parent, random, material, appliedForce){
+function CreateBall(parent, random, material, appliedForce){
   if (document.visibilityState === "visible"){
     let startPosition = new Vector2(-10,0);
     let randomTechnologyIndex = Math.floor(Math.random() * ((technologies.length - 1) - 0 + 1)) + 0
@@ -245,3 +245,51 @@ export default async function StartBouncing(parent){
   await delay(1000);
   StartBouncing(parent);
 }
+
+export function updateCurrentMaterial(event){
+  if (!materials[event.target.value]) { return Error("Material is not in list of saved materials."); } 
+  console.log(materials[event.target.value]);
+  document.getElementById("Material-Name-Input").value = materials[event.target.value].materialName;
+  document.getElementById("Material-Weight-Input").value = materials[event.target.value].materialWeight;
+  document.getElementById("Material-Bounce-Input").value = materials[event.target.value].materialBounce;
+  document.getElementById("Material-Friction-Input").value = materials[event.target.value].materialFriction;
+}
+
+export function updateSavedMaterialsList(){
+  for (let materialIndex in materials){
+    const materialOption = materials[materialIndex].materialName;
+    const option = document.createElement("option");
+    option.innerHTML = materialOption;
+    option.value = materialIndex;
+    if (checkIfMaterialInSelect(materialOption, savedMaterialSelect.children)){ continue; }
+    savedMaterialSelect.appendChild(option);
+  }
+}
+
+function checkIfMaterialInSelect(materialName, array){
+  for (let option in array){
+    if (savedMaterialSelect.children[option].innerHTML ===  materialName){
+      return true;
+    }
+  }
+  return false;
+}
+
+function getMaterialValuesFromForm(){
+  const materialName = document.getElementById("Material-Name-Input").value;
+  const materialWeight = document.getElementById("Material-Weight-Input").value / 100;
+  const materialBounce = document.getElementById("Material-Bounce-Input").value / 100;
+  const materialFriction = document.getElementById("Material-Friction-Input").value / 1000;
+
+  return new Material(materialName, materialWeight, materialBounce, materialFriction);
+}
+
+export function saveMaterial(event){
+  event.preventDefault();
+  const materialToSave = getMaterialValuesFromForm()
+  materials.push(materialToSave);
+  updateSavedMaterialsList();
+}
+
+export const savedMaterialSelect = document.getElementById("Saved-Material-Select");
+export const physicsMaterialForm = document.getElementById("Physics-Material-Form");
