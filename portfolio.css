@@ -61,42 +61,67 @@ nav {
   background-color: lightblue;
   overflow: hidden;
   height: 100vh;
-
+  
   & div{
     position: absolute;
   }
 
-  & div:first-child{
+  & .self-introduction{
     margin: 0;
     top: 40%;
     left: 30%;
   }
 
-  & .gridLine {
-    opacity: 25%;
+  & #Hero-Grid{
+    width: 100%;
+    height: 100%;
+    position: relative;
+    
+
+    & .gridLine {
+      transition:
+        height 2s,
+        width 2s;
+
+      position: absolute;
+      opacity: 100%;
+      height: 1%;
+      width: 0%;
+    }
   }
 }
 
 
-.ball-creation-form {
-  width: 15%;
-  margin: 1%;
-  padding: 3%;
-  background-color: pink;
+.sticky-note {
+  right: 2.5%;
+  top: 5%;
   border-radius: 10px 10px 0px 0px;
+  padding: 2%;
+  width: 15%;
+  background-color: var(--highlight_color);
   overflow: hidden;
- & h3{
-  margin: 10px -2%;
-  border-bottom: solid black 1px;
-}
 
-  &  form > input, label{
+  & h3 {
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  & form {
+    margin-top: 15%;
+  }
+
+  & form:first-of-type {
+    margin-top: 20%;
+  }
+
+  &  form > input, label, select{
     display: block;
     width: 100%;
   }
+}
 
-  & h3{
-    margin: 10px -2%;
-    border-bottom: solid black 1px;
-  }
+button {
+  padding: 2%;
+  margin-top: 5%;
 }

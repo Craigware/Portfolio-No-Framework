@@ -21,22 +21,30 @@
     </nav>
 
     <div id="Hero" class="welcome-screen">
-      <div>
+      <div id="Hero-Grid" class="grid">
+      </div>
+
+      <div class="self-introduction">
         <h1>Hello, My name is Craig Johnson</h1>
         <h1>I am a <span id="Alternating-Job-Title"></span></h1>
       </div>
-      <div onclick="" id="Ball-Forms-Holder" class="ball-creation-form">
-        <div class="post-it-sticky">
-        <h3>TechBall Creation</h3>
-        </div>
+
+      <div onclick="" id="Ball-Forms-Holder" class="sticky-note">
+        <h3>Create a Bouncy Ball</h3>
         <form id="World-Settings">
+          <h4>World Settings <span>(Updates on change)</span></h4>
           <label for="materialBounciness">Gravity</label>
           <input id="Gravity" type="range" min="0" max="100" value="30"/>
           
           <label for="materialBounciness">Wind Strength</label>
           <input id="Wind-Strength" type="range" min="-100" max="100" value="0"/>
         </form>
-        <form id="Create-A-Ball">
+        <form id="Physics-Material-Form">
+          <h4>Physics Material</h4>
+          <label for="materialFromSaved">Saved Material</label>
+          <select id="Saved-Material-Select">
+            <option>None</option>
+          </select>
           <label for="materialName">Material Name</label>
           <input id="Material-Name-Input" name="materialName" type="text" />
           <label for="materialWeight">Material Weight</label>
@@ -45,14 +53,16 @@
           <input id="Material-Bounce-Input" type="range" min="0" max="100" value="30"/>
           <label for="materialFriction">Material Friction</label>
           <input id="Material-Friction-Input" type="range" min="0" max="100" value="1"/>
+          <button>Save Material</button>
+        </form>
+        <form id="Applied-Force-Form">
+          <h4>Initial Applied Force</h4>
           <label for="appliedForceX">Applied Force X</label>
           <input id="Applied-Force-X" type="range" min="0" max="100" value="0"/>
           <label for="appliedForceY">Applied Force Y</label>
           <input id="Applied-Force-Y" type="range" min="0" max="100" value="0"/>
           <button>Create</button>
         </form>
-      </div>
-      <div id="Hero-Grid" class="grid">
       </div>
     </div>
     <div id="About-Me">

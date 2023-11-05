@@ -190,7 +190,7 @@ class TechnologyBall{
   }
 }
 
-const materials = [
+export const materials = [
   new Material("silly name", 0.3, 0.7, 0)
 ]
 
@@ -242,6 +242,6 @@ export function AlterWorldEffects(event){
 
 export default async function StartBouncing(parent){
   CreateBall(parent, true);
-  await delay(10000);
+  await delay(1000);
   StartBouncing(parent);
 }
