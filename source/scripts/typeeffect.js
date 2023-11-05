@@ -7,6 +7,10 @@ export async function TypeWordEffect(element, word, typeSpeed=100){
       element.innerHTML += word[i];
       await delay(typeSpeed)
     }
+    let randomChance = Math.random();
+    if (randomChance > 0.9){
+      element.innerHTML += ".";
+    }
     resolve(0);
   });
 }

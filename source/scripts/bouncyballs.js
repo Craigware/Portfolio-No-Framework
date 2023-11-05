@@ -148,7 +148,7 @@ class TechnologyBall{
 
       this.position.y += appliedForce.y;
       this.position.x += appliedForce.x;
-      appliedForce.x -= windStrength * this.material.weight;
+      appliedForce.x -= windStrength / this.material.weight;
       appliedForce.y -= gravity * this.material.weight;
 
       if (this.position.y <= 0){
@@ -162,8 +162,10 @@ class TechnologyBall{
           } else {
             appliedForce.x -= this.material.friction;
           }
-        } else if (appliedForce.x > 0) {
-          if (appliedForce.x + this.material.friction < 0){
+        }
+
+        if (appliedForce.x < 0) {
+          if (appliedForce.x + this.material.friction > 0){
             appliedForce.x = 0;
           } else {
             appliedForce.x += this.material.friction;
@@ -222,7 +224,7 @@ export function CreateBallFromForm(event){
   const materialName = document.getElementById("Material-Name-Input").value;
   const materialWeight = document.getElementById("Material-Weight-Input").value / 100;
   const materialBounce = document.getElementById("Material-Bounce-Input").value / 100;
-  const materialFriction = document.getElementById("Material-Friction-Input").value / 1000;
+  const materialFriction = document.getElementById("Material-Friction-Input").value / 10000;
   const x = document.getElementById("Applied-Force-X").value / 10;
   const y = document.getElementById("Applied-Force-Y").value / 10;
 

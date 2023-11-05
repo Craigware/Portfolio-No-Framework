@@ -37,25 +37,25 @@ addEventListener("resize", () => { GenerateHeroGrid(cellAmount) })
 GenerateHeroGrid(cellAmount)
 
 
-// async function updateVisibilty(event){
-//   if (event.target.tagName === "DIV" || event.target.tagName === "H3") {
-//     let childrenVisibility;
-//     let animationDelay = 2;
-//     event.target.style.transition = `height ${animationDelay}s`
-//     if (!event.target.currentVisibility){
-//       console.log("!")
-//       event.target.currentVisibility = true;
-//       ballCreationFormContainer.style.height = "0%"; 
-//       childrenVisibility = "hidden";
-//     } else {
-//       console.log("?")
-//       event.target.currentVisibility = false;
-//       ballCreationFormContainer.style.height = "auto";
+async function updateVisibilty(event){
+  if (event.target.tagName === "DIV" || event.target.tagName === "H3") {
+    let childrenVisibility;
+    let animationDelay = 2;
+    event.target.style.transition = `height ${animationDelay}s`
+    if (!event.target.currentVisibility){ 
+      console.log("!")
+      event.target.currentVisibility = true;
+      ballCreationFormContainer.style.height = "0%"; 
+      childrenVisibility = "hidden";
+    } else {
+      console.log("?")
+      event.target.currentVisibility = false;
+      ballCreationFormContainer.style.height = "auto";
     
-//       childrenVisibility = "visible";
-//     }
-//   }
-// }
+      childrenVisibility = "visible";
+    }
+  }
+}
 
-// const ballCreationFormContainer = document.getElementById("Ball-Forms-Holder");
-// ballCreationFormContainer.addEventListener("click", updateVisibilty)
+const ballCreationFormContainer = document.getElementById("Ball-Forms-Holder");
+ballCreationFormContainer.addEventListener("click", updateVisibilty)

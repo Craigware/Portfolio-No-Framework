@@ -13,7 +13,7 @@
 :root {
   --background_color: white;
   --text_color: black;
-  --foreground_color: ;
+  --foreground_color: lightblue;
   --shadow_color: ;
   --highlight_color: #ffff99;
 
@@ -24,13 +24,33 @@
 
 nav {
   padding: .5rem;
-  display: flex;
-  z-index: 100;
+  align-items: center;
   height: 2rem;
+  z-index: 100;
+  
+  & a{
+    text-decoration: none;
+  }
 
-  & .navbar-item {
-    display: inline-block;
-    padding: .25rem;
+  & .navbar-item{
+    display: inline;
+    color: black;
+    margin-left: 1rem;
+    margin-right: 1rem;
+    vertical-align: middle;
+    line-height: 100%;
+  }
+
+  & .navbar-logo{
+    margin-left: .25rem;
+    margin-right: .25rem;
+    filter: brightness(0);
+  }
+
+  & img{
+    width: auto;
+    height: 1.9rem;
+    justify-content: ;
   }
 }
 
@@ -60,7 +80,7 @@ nav {
 
 #Hero{
   position: relative;
-  background-color: lightblue;
+  background-color: var(--foreground_color);
   overflow: hidden;
   height: calc(100vh - 2.75rem);
   
@@ -102,7 +122,7 @@ nav {
 .sticky-note {
   right: 2.5%;
   top: 5%;
-  border-radius: 10px 10px 0px 0px;
+  border-radius: 10px;
   padding: 2%;
   width: 15%;
   background-color: var(--highlight_color);
