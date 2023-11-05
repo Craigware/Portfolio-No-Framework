@@ -79,11 +79,16 @@ nav {
 
 
 .ball-creation-form {
-  transition: height 2s;
   width: 15%;
   margin: 1%;
   padding: 3%;
   background-color: pink;
+  border-radius: 10px 10px 0px 0px;
+  overflow: hidden;
+ & h3{
+  margin: 10px -2%;
+  border-bottom: solid black 1px;
+}
 
   &  form > input, label{
     display: block;
