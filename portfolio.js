@@ -31,9 +31,10 @@ import AlterJobTitle, { TypeWordEffect } from "./source/scripts/typeeffect.js";
 AlterJobTitle(100,100,4000);
 
 
-import {GenerateHeroGrid, cellAmount} from './source/scripts/scalablegrid.js'
+import {GenerateHeroGrid} from './source/scripts/scalablegrid.js'
+const cellAmount = 25;
 addEventListener("resize", () => { GenerateHeroGrid(cellAmount) })
-
+GenerateHeroGrid(cellAmount)
 
 
 // async function updateVisibilty(event){

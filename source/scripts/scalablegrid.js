@@ -1,7 +1,5 @@
 import { Vector2 } from "./bouncyballs.js";
 
-export let cellAmount = 10;
-
 export function GenerateHeroGrid(cellAmount){
   const gridContainer = document.getElementById("Hero-Grid");
   let cellSize = 100 / cellAmount;
@@ -40,6 +38,3 @@ export function GenerateHeroGrid(cellAmount){
     `;
   }
 }
-
-GenerateHeroGrid(cellAmount);
-
