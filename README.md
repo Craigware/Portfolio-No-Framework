@@ -7,3 +7,9 @@ A portfolio website created with Javascript, HTML, and CSS. Without any framewor
 - A word typing effect
 - A word deletion effect
 - An automated cycle through job titles
+
+## Planned features
+- Movable UI for hero forms
+- Animations for physics body destruction
+- Sound effects
+- Sound effects toggle

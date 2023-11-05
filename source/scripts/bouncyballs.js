@@ -191,15 +191,12 @@ class TechnologyBall{
 }
 
 const materials = [
-  new Material("silly name", 0.3, 0.7, 0),
-  new Material("silly name", 0.47, 0.03, 0.01),
-  new Material("silly name", 0.81, 1, 0.01),
-  new Material("silly name", 0.29, 0.69, 0)
+  new Material("silly name", 0.3, 0.7, 0)
 ]
 
 export function CreateBall(parent, random, material, appliedForce){
   if (document.visibilityState === "visible"){
-    let startPosition = new Vector2(0,0);
+    let startPosition = new Vector2(-10,0);
     let randomTechnologyIndex = Math.floor(Math.random() * ((technologies.length - 1) - 0 + 1)) + 0
     let technology = technologies[randomTechnologyIndex];
     if (random){
@@ -245,6 +242,6 @@ export function AlterWorldEffects(event){
 
 export default async function StartBouncing(parent){
   CreateBall(parent, true);
-  await delay(109);
+  await delay(10000);
   StartBouncing(parent);
 }
