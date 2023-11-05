@@ -148,7 +148,7 @@ class TechnologyBall{
 
       this.position.y += appliedForce.y;
       this.position.x += appliedForce.x;
-      appliedForce.x -= windStrength / this.material.weight;
+      appliedForce.x -= windStrength * this.material.weight;
       appliedForce.y -= gravity * this.material.weight;
 
       if (this.position.y <= 0){
@@ -277,6 +277,12 @@ function checkIfMaterialInSelect(materialName, array){
 
 function getMaterialValuesFromForm(){
   const materialName = document.getElementById("Material-Name-Input").value;
+  for (let material in materials){
+    if (materials[material].materialName === materialName){
+      throw Error("A material of this name already exists in saved materials.")
+    }
+  }
+
   const materialWeight = document.getElementById("Material-Weight-Input").value / 100;
   const materialBounce = document.getElementById("Material-Bounce-Input").value / 100;
   const materialFriction = document.getElementById("Material-Friction-Input").value / 1000;
