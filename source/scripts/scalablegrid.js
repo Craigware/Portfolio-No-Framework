@@ -1,7 +1,11 @@
 import { Vector2 } from "./bouncyballs.js";
 
-export function GenerateHeroGrid(cellSize){
+export let cellAmount = 10;
+
+export function GenerateHeroGrid(cellAmount){
   const gridContainer = document.getElementById("Hero-Grid");
+  let cellSize = 100 / cellAmount;
+
   gridContainer.innerHTML = ""
   const offsets = new Vector2(1,1);
   if(gridContainer.clientHeight > gridContainer.clientWidth){
@@ -9,9 +13,8 @@ export function GenerateHeroGrid(cellSize){
   } else {
     offsets.y = gridContainer.clientWidth / gridContainer.clientHeight;
   }
-  
-  // i < 100 because i = the % of the page, must go to 100 to spread through entire page
-  for (let i = 0; i < 100 / cellSize + 1; i++){
+
+  for (let i = 0; i < cellAmount; i++){
     const gridLine = document.createElement("div")
     gridLine.classList.add("gridLine");
     gridContainer.appendChild(gridLine);
@@ -19,11 +22,12 @@ export function GenerateHeroGrid(cellSize){
       width: 1px;
       height: 100%;
       background-color: white;
-      right: ${i * (100 / cellSize) * offsets.x}%;
+      right: ${i * cellSize * offsets.x}%;
       z-index: 0;
     `;
   }
-  for (let i = 0; i < 100 / cellSize+ 1; i++){
+
+  for (let i = 0; i < cellAmount; i++){
     const gridLine = document.createElement("div")
     gridLine.classList.add("gridLine");
     gridContainer.appendChild(gridLine);
@@ -31,10 +35,11 @@ export function GenerateHeroGrid(cellSize){
       width: 100%;
       height: 1px;
       background-color: white;
-      bottom: ${i * (100 / cellSize) * offsets.y}%;
+      bottom: ${i * cellSize * offsets.y}%;
       z-index: 0;
     `;
   }
 }
 
-GenerateHeroGrid(10);
+GenerateHeroGrid(cellAmount);
+

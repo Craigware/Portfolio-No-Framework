@@ -3,13 +3,13 @@ window.LightSwitch = LightSwitch;
 
 
 import StartBouncing, {
-  CreateBallFromForm, 
-  AlterWorldEffects, 
-  updateCurrentMaterial, 
-  saveMaterial, 
-  updateSavedMaterialsList, 
+  updateCurrentMaterial,
+  saveMaterial,
+  updateSavedMaterialsList,
   savedMaterialSelect,
-  physicsMaterialForm
+  physicsMaterialForm,
+  CreateBallFromForm,
+  AlterWorldEffects
 } from "./source/scripts/bouncyballs.js";
 savedMaterialSelect.addEventListener("change", updateCurrentMaterial);
 physicsMaterialForm.addEventListener("submit", saveMaterial);
@@ -31,8 +31,8 @@ import AlterJobTitle, { TypeWordEffect } from "./source/scripts/typeeffect.js";
 AlterJobTitle(100,100,4000);
 
 
-import {GenerateHeroGrid} from './source/scripts/scalablegrid.js'
-addEventListener("resize", () => { GenerateHeroGrid(10) })
+import {GenerateHeroGrid, cellAmount} from './source/scripts/scalablegrid.js'
+addEventListener("resize", () => { GenerateHeroGrid(cellAmount) })
 
 
 
