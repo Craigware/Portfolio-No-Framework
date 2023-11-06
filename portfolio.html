@@ -11,6 +11,7 @@
   <main>
     
     <nav id="Navigation">
+      <a href="#Top" class="navbar-item">Top</a>
       <a href="#About-Me" class="navbar-item">About-Me</a>
       <a href="#Education" class="navbar-item">Education</a>
       <a href="#Projects" class="navbar-item">Projects</a>
@@ -20,7 +21,7 @@
         <a target="_blank" href="https://www.linkedin.com/in/craig-johnson-jr/" class="navbar-item navbar-logo"><img alt="LinkedIn Logo" src="./source/images/LI-In-Bug.png"/></a>
       </div>
     </nav>
-    <div class="navbar-spacer"></div>
+    <div id="Top" class="navbar-spacer"></div>
     <div id="Hero" class="welcome-screen">
       <div id="Hero-Grid" class="grid">
       </div>
@@ -51,7 +52,7 @@
           <label for="materialWeight">Material Weight</label>
           <input id="Material-Weight-Input" type="range" min="1" max="200" value="50"/>
           <label for="materialBounciness">Material Bounciness</label>
-          <input id="Material-Bounce-Input" type="range" min="0" max="100" value="30"/>
+          <input id="Material-Bounce-Input" type="range" min="0" max="100" value="80"/>
           <label for="materialFriction">Material Friction</label>
           <input id="Material-Friction-Input" type="range" min="0" max="100" value="1"/>
           <button>Save Material</button>
@@ -59,89 +60,96 @@
         <form id="Applied-Force-Form">
           <h4>Initial Applied Force</h4>
           <label for="appliedForceX">Applied Force X</label>
-          <input id="Applied-Force-X" type="range" min="0" max="100" value="0"/>
+          <input id="Applied-Force-X" type="range" min="0" max="100" value="10"/>
           <label for="appliedForceY">Applied Force Y</label>
-          <input id="Applied-Force-Y" type="range" min="0" max="100" value="0"/>
+          <input id="Applied-Force-Y" type="range" min="0" max="100" value="20"/>
           <button>Create</button>
         </form>
       </div>
     </div>
-
+    <!-- <div class="navbar-spacer"></div> -->
     <div id="About-Me">
       <h1>About me</h1>
+      <div style="transform: rotate(20deg);" class="polaroid-container">
+        <img src="./source/images/my_face.jpg" />
+        <h6>This is ME<span>!</span></h6>
+      </div>
       <p>
         I am an artist turned web developer. I started taking coding more
         seriously when I was in college because I wanted to make my artwork interactive. Front-end development and
         game development has been my favorite outlets for such. Through my experience learning I have come to find
         out I very much enjoy all aspects of software development. The creativity and problem solving of front-end
         is very engaging for me while the organization and management of data has proven to be quite satisfying in 
-        the back-end.
-      </p>
-      <p>
+        the back-end.<br>
         I am currently looking for an entry or junior level position in either front-end development, back-end development
         or full-stack development. My favorite frameworks to use have been React for front-end, and FastAPI or Django for back-end.
         Although I do love learning different technologies, I currently have specific interest in learning ASP.NET due to C# being
         my favorite programming language. 
       </p>
 
-
       <h1>Technical Skills</h1>
-      <h3>Languages</h3>
-      <ul>
-        <li>Javascript</li>
-        <li>Python</li>
-        <li>C Sharp</li>
-        <li>HTML</li>
-        <li>CSS</li>
-        <li>SQL</li>
-      </ul>
+      <div id="About-Me-Skills" class="about-me-skills">
+        <h3>Languages</h3>
+        <ul>
+          <li>Javascript</li>
+          <li>Python</li>
+          <li>C Sharp</li>
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>SQL</li>
+        </ul>
 
-      <h3>Front-End</h3>
-      <ul>
-        <li>React</li>
-        <li>DOM Manipulation</li>
-        <li>Redux</li>
-        <li>Web Sockets</li>
-        <li>TailwindCSS</li>
-        <li>SASS</li>
-        <li>Bootstrap</li>
-      </ul>
+        <h3>Front-End</h3>
+        <ul>
+          <li>React</li>
+          <li>DOM Manipulation</li>
+          <li>Redux</li>
+          <li>Web Sockets</li>
+          <li>TailwindCSS</li>
+          <li>SASS</li>
+          <li>Bootstrap</li>
+        </ul>
 
-      <h3>Back-End</h3>
-      <ul>
-        <li>Django</li>
-        <li>FastAPI</li>
-        <li>RabbitMQ</li>
-        <li>MongoDB</li>
-        <li>PostgreSQL</li>
-      </ul>
+        <h3>Back-End</h3>
+        <ul>
+          <li>Django</li>
+          <li>FastAPI</li>
+          <li>RabbitMQ</li>
+          <li>MongoDB</li>
+          <li>PostgreSQL</li>
+        </ul>
 
-      <h3>Collaboration</h3>
-      <ul>
-        <li>Jira</li>
-        <li>Git</li>
-        <li>Docker</li>
-        <li>Microservices</li>
-        <li>Monoliths</li>
-        <li>Domain Driven Design</li>
-        <li>Event Sourcing</li>
-        <li>Message Passing</li>
-        <li>Project Reconstruction</li>
-      </ul>
+        <h3>Collaboration</h3>
+        <ul>
+          <li>Jira</li>
+          <li>Git</li>
+          <li>Docker</li>
+          <li>Microservices</li>
+          <li>Monoliths</li>
+          <li>Domain Driven Design</li>
+          <li>Event Sourcing</li>
+          <li>Message Passing</li>
+          <li>Project Reconstruction</li>
+        </ul>
 
-      <h2>Soft Skills</h2>
-      <ul>
-        <li>High Attention to Detail</li>
-        <li>Organization</li>
-        <li>Adaptability</li>
-        <li>Problem Solving</li>
-        <li>Creativity</li>
-        <li>Individually Motivated</li>
-        <li>Project Management</li>
-      </ul>
-
+        <h1>Soft Skills</h1>
+        <ul>
+          <li>High Attention to Detail</li>
+          <li>Organization</li>
+          <li>Adaptability</li>
+          <li>Problem Solving</li>
+          <li>Creativity</li>
+          <li>Individually Motivated</li>
+          <li>Project Management</li>
+        </ul>
+      </div>
       <!-- <h2>Interests</h2>
       <p>List of interests</p> -->
+      <h1>Cool Pictures of Dogs</h1>
+      <div class="polaroid-container">
+        <img src="./source/images/my_face.jpg" />
+        <h6>This is ME<span>!</span></h6>
+      </div>
     </div>
 
     <div id="Education">
@@ -157,7 +165,7 @@
         <li>Used relational and non relation databases in order to store data. Used Django's default database for 30% of my projects working with the in system migrations, 20% using SQL and Postgres with a detached database, and 50% using MongoDB.</li>
       </ul>
 
-      <h2>Palm Beach State</h2>
+      <h2>Palm Beach State College</h2>
       <p>When I first finished high school I immediately started college with a focus on graphic design at Palm Beach State. Unfortunately my
         time there was cut short by the Covid pandemic but I enjoyed my time all the same. I-
       </p>
@@ -175,6 +183,8 @@
     </div>
 
     <div id="Projects">
+      <div id="Projects-Grid" class="grid">
+      </div>
       <!-- I want to have a short description of the project. A couple images of them, and a link to their repos. -->
       <h1>Projects</h1>
       <h4>Gold'n Hour</h4>

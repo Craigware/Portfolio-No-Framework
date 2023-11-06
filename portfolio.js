@@ -33,8 +33,19 @@ AlterJobTitle(100,100,4000);
 
 import {GenerateHeroGrid} from './source/scripts/scalablegrid.js'
 const cellAmount = 25;
-addEventListener("resize", () => { GenerateHeroGrid(cellAmount) })
-GenerateHeroGrid(cellAmount)
+const heroGrid = document.getElementById("Hero-Grid");
+// const projectsGrid = document.getElementById("Projects-Grid");
+const grids = [
+  heroGrid,
+  // projectsGrid
+]
+addEventListener("resize", () => {
+  for (let grid in grids){
+    GenerateHeroGrid(grids[grid], cellAmount)
+  }
+})
+GenerateHeroGrid(heroGrid, cellAmount)
+// GenerateHeroGrid(projectsGrid, cellAmount)
 
 
 async function updateVisibilty(event){
@@ -59,3 +70,11 @@ async function updateVisibilty(event){
 
 const ballCreationFormContainer = document.getElementById("Ball-Forms-Holder");
 ballCreationFormContainer.addEventListener("click", updateVisibilty)
+
+// const technicalSkills = document.getElementById("About-Me-Skills");
+// for(let i = 0; i < technicalSkills.children.length; i++){
+//   const currentSelect = technicalSkills.children[i];
+//   if (currentSelect.tagName === "H3"){
+//     currentSelect.style.marginLeft = `calc(4rem + ${i + 1}rem)`;
+//   }
+// }

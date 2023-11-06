@@ -82,7 +82,6 @@ export default function AlterJobTitle(typeSpeed, eraseSpeed, delayBetweenTitles)
     "Back-End Developer",
     "Programmer",
     "Web Developer",
-    "Artist",
     "Graphic Designer",
     "Game Designer",
     "Game Developer"

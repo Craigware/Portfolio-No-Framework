@@ -1,21 +1,20 @@
 import { Vector2 } from "./bouncyballs.js";
 
-export function GenerateHeroGrid(cellAmount){
-  const gridContainer = document.getElementById("Hero-Grid");
+export function GenerateHeroGrid(element, cellAmount){
   let cellSize = 100 / cellAmount;
 
-  gridContainer.innerHTML = ""
+  if (element.innerHTML !== undefined) { element.innerHTML = ""; }
   const offsets = new Vector2(1,1);
-  if(gridContainer.clientHeight > gridContainer.clientWidth){
-    offsets.x = gridContainer.clientHeight / gridContainer.clientWidth;
+  if(element.clientHeight > element.clientWidth){
+    offsets.x = element.clientHeight / element.clientWidth;
   } else {
-    offsets.y = gridContainer.clientWidth / gridContainer.clientHeight;
+    offsets.y = element.clientWidth / element.clientHeight;
   }
 
   for (let i = 0; i < cellAmount; i++){
     const gridLine = document.createElement("div")
     gridLine.classList.add("gridLine");
-    gridContainer.appendChild(gridLine);
+    element.appendChild(gridLine);
     gridLine.style.cssText = `
       width: 1px;
       height: 100%;
@@ -28,7 +27,7 @@ export function GenerateHeroGrid(cellAmount){
   for (let i = 0; i < cellAmount; i++){
     const gridLine = document.createElement("div")
     gridLine.classList.add("gridLine");
-    gridContainer.appendChild(gridLine);
+    element.appendChild(gridLine);
     gridLine.style.cssText = `
       width: 100%;
       height: 1px;
