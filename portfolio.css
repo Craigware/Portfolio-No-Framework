@@ -3,14 +3,16 @@
 * {
   margin: 0;
   scroll-behavior: smooth;
-  scroll-padding-top: 2.5rem;
+  scroll-padding-top: 3rem;
   padding: 0;
   z-index: 1;
   font-family: 'Roboto Slab', serif;
 }
 
-
 :root {
+  --navigation_padding: .5rem;
+  --navigation_height: 2rem;
+
   --background_color: white;
   --text_color: black;
   --foreground_color: lightblue;
@@ -22,36 +24,53 @@
 }
 
 
-nav {
-  padding: .5rem;
+
+#Navigation {
+  position: fixed;
+  display: flex;
+
+  background-color: var(--background_color);
+
+  height: var(--navigation_height);
+  width: calc(100% - calc(var(--navigation_padding) * 2));
+  
+
+  padding: var(--navigation_padding);
+
   align-items: center;
-  height: 2rem;
   z-index: 100;
+
   
   & a{
+    width: auto;
     text-decoration: none;
   }
 
   & .navbar-item{
     display: inline;
     color: black;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    vertical-align: middle;
-    line-height: 100%;
+    margin-left: .75rem;
+    margin-right: .75rem;
   }
 
   & .navbar-logo{
-    margin-left: .25rem;
-    margin-right: .25rem;
+    margin-left: auto;
     filter: brightness(0);
   }
 
+  & .socials{
+    margin-left: auto;
+  }
+
   & img{
+    margin-top: 5%;
     width: auto;
     height: 1.9rem;
-    justify-content: ;
   }
+}
+
+.navbar-spacer {
+  height: calc(var(--navigation_height) + calc(var(--navigation_padding) * 2));
 }
 
 
