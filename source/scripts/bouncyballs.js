@@ -135,12 +135,18 @@ class TechnologyBall{
       parseInt(this.element.style.width)/2,
       parseInt(this.element.style.height)/2
     );
-
+    
+    this.StopExisting(10000);
     return technologyGFX;
   }
 
+  async StopExisting(timeBeforeDeath=0){
+    await delay(timeBeforeDeath);
+    this.element.parentNode.removeChild(this.element);
+    return true;
+  }
 
-  async UpdatePosition(element, appliedForce){
+  async UpdatePosition(appliedForce){
     if(document.visibilityState === "visible"){
       if (!this.velocity){
         this.velocity = new Vector2(appliedForce.x, appliedForce.y);
@@ -148,6 +154,7 @@ class TechnologyBall{
 
       this.position.y += appliedForce.y;
       this.position.x += appliedForce.x;
+
       appliedForce.x -= windStrength / this.material.weight;
       appliedForce.y -= gravity * this.material.weight;
 
@@ -155,7 +162,6 @@ class TechnologyBall{
         this.position.y = 0;
         appliedForce.y = this.velocity.y * this.material.bounciness;
         this.velocity.y = appliedForce.y;
-
         if (appliedForce.x > 0){
           if (appliedForce.x - this.material.friction < 0){
             appliedForce.x = 0;
@@ -174,21 +180,21 @@ class TechnologyBall{
       }
 
       if(appliedForce.x <= 0 && windStrength === 0){
-        element.parentNode.removeChild(element);
+        this.StopExisting();
         return 0;
       }
 
       if(this.position.x >= 100 || this.position.x <= -20){
-        element.parentNode.removeChild(element);
+        this.StopExisting();
         return 0
       }
 
-      element.style.right = `calc(${this.position.x}% + ${this.anchorOffset.x}px)`;
-      element.style.bottom = `calc(${this.position.y}% + ${this.anchorOffset.y}px)`;
+      this.element.style.right = `calc(${this.position.x}% + ${this.anchorOffset.x}px)`;
+      this.element.style.bottom = `calc(${this.position.y}% + ${this.anchorOffset.y}px)`;
     }
 
     await delay(ballRefreshRate);
-    this.UpdatePosition(element, appliedForce);
+    this.UpdatePosition(appliedForce);
   }
 }
 
@@ -215,9 +221,10 @@ function CreateBall(parent, random, material, appliedForce){
 
     TechBall.CreateTechnologyGFX();
     parent.appendChild(TechBall.element);
-    TechBall.UpdatePosition(TechBall.element, appliedForce, 10);
+    TechBall.UpdatePosition(appliedForce);
   }
 }
+
 
 export function CreateBallFromForm(event){
   event.preventDefault();

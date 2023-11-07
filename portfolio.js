@@ -78,3 +78,6 @@ ballCreationFormContainer.addEventListener("click", updateVisibilty)
 //     currentSelect.style.marginLeft = `calc(4rem + ${i + 1}rem)`;
 //   }
 // }
+
+
+// set lifetime on techball
