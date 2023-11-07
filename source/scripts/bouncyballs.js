@@ -1,10 +1,5 @@
 import delay from "./timing.js";
 
-let gravity = 0.3;
-let windStrength = 0;
-const fps = 60;
-const ballRefreshRate = 1000/fps;
-
 export class Vector2{
   x = Number;
   y = Number;
@@ -48,6 +43,7 @@ export class Vector2{
   }
 }
 
+
 export class Material{
   materialName = String;
   weight = Number;
@@ -62,10 +58,11 @@ export class Material{
   }
 }
 
+
 class Technology{
   technologyName = String;
   imagePath = String;
-  imageOffsets = Object;
+  imageOffsets = Vector2;
 
   constructor(technologyName, imagePath, imageOffsets=new Vector2(0, 0)){
     this.technologyName = technologyName;
@@ -73,19 +70,6 @@ class Technology{
     this.imageOffsets = imageOffsets;
   }
 }
-
-const technologies = [
-  new Technology("Javascript", "./source/images/javascript_logo.jpg"),
-  new Technology("Python", "./source/images/python_logo.png", new Vector2(0, 50)),
-  new Technology("CSharp", "./source/images/csharp_logo.png"),
-  new Technology("React", "./source/images/react_logo.jpg"),
-  new Technology("Django", "./source/images/django_logo.png"),
-  // new Technology("TailwindCSS", "./source/images/tailwindcss_logo.jpg"),
-  // new Technology("SASS", "./source/images/sass_logo.png"),
-  // new Technology("Docker", ""), 
-  // new Technology("Git", ""),
-  // new Technology("Bootstrap", ""),
-]
 
 
 class TechnologyBall{
@@ -103,11 +87,13 @@ class TechnologyBall{
     this.rotationAmount = 0;
   }
 
+  // when rotation gets introduced this will update the trajectory based on the rotated value
   DecideTrajectory(){
     return 0;
   }
 
-  CreateTechnologyGFX(borderRadius=100, imageSize=64){
+  // Creates techball
+  CreateTechnologyGFX(borderRadius=100, imageSize=64, lifeTimeMS=10000){
     if (borderRadius > 100){
       throw Error("Value of borderRadius must be between 0-100");
     }
@@ -136,16 +122,21 @@ class TechnologyBall{
       parseInt(this.element.style.height)/2
     );
     
-    this.StopExisting(10000);
+    this.StopExisting(lifeTimeMS);
     return technologyGFX;
   }
 
-  async StopExisting(timeBeforeDeath=0){
-    await delay(timeBeforeDeath);
-    this.element.parentNode.removeChild(this.element);
-    return true;
+  // Kills techball
+  async StopExisting(timeBeforeDeathMS=0){
+    await delay(timeBeforeDeathMS);
+    if (this.element.parentNode){
+      this.element.parentNode.removeChild(this.element);
+      return true;
+    }
+    return false;
   }
 
+  // applies force to the techball, global variable fps times per second
   async UpdatePosition(appliedForce){
     if(document.visibilityState === "visible"){
       if (!this.velocity){
@@ -198,49 +189,116 @@ class TechnologyBall{
   }
 }
 
-export const materials = [
-  new Material("silly name", 0.3, 0.7, 0)
-]
+export class BallSpawning{
+  // Creates a ball, if random = true random values will be selected
+  static CreateBall(parent, random, material, appliedForce){
+    if (document.visibilityState === "visible"){
+      let startPosition = new Vector2(-10,0);
+      let randomTechnologyIndex = Math.floor(Math.random() * ((technologies.length - 1) - 0 + 1)) + 0
+      let technology = technologies[randomTechnologyIndex];
+      if (random){
+        
+        let randomMaterialIndex = Math.floor(Math.random() * ((materials.length - 1) - 0 + 1)) + 0
+        material = materials[randomMaterialIndex];
+        
+        appliedForce = new Vector2(0,0);
+        appliedForce.RandomizeX(0.1,2);
+        appliedForce.RandomizeY(0.2,5);
+      }
 
-function CreateBall(parent, random, material, appliedForce){
-  if (document.visibilityState === "visible"){
-    let startPosition = new Vector2(-10,0);
-    let randomTechnologyIndex = Math.floor(Math.random() * ((technologies.length - 1) - 0 + 1)) + 0
-    let technology = technologies[randomTechnologyIndex];
-    if (random){
-      
-      let randomMaterialIndex = Math.floor(Math.random() * ((materials.length - 1) - 0 + 1)) + 0
-      material = materials[randomMaterialIndex];
-      
-      appliedForce = new Vector2(0,0);
-      appliedForce.RandomizeX(0.1,2);
-      appliedForce.RandomizeY(0.2,5);
+      const TechBall = new TechnologyBall(technology, material, startPosition);
+
+      TechBall.CreateTechnologyGFX();
+      parent.appendChild(TechBall.element);
+      TechBall.UpdatePosition(appliedForce);
     }
+  }
 
-    const TechBall = new TechnologyBall(technology, material, startPosition);
+  // Self explaining
+  static CreateBallFromForm(event){
+    event.preventDefault();
+    const materialName = document.getElementById("Material-Name-Input").value;
+    const materialWeight = document.getElementById("Material-Weight-Input").value / 100;
+    const materialBounce = document.getElementById("Material-Bounce-Input").value / 100;
+    const materialFriction = document.getElementById("Material-Friction-Input").value / 10000;
+    const x = document.getElementById("Applied-Force-X").value / 10;
+    const y = document.getElementById("Applied-Force-Y").value / 10;
 
-    TechBall.CreateTechnologyGFX();
-    parent.appendChild(TechBall.element);
-    TechBall.UpdatePosition(appliedForce);
+    let material = new Material(materialName, materialWeight, materialBounce, materialFriction);
+    let appliedForce = new Vector2(x,y);
+
+    // cant use this because of the event listener for some reason
+    BallSpawning.CreateBall(document.getElementById("Hero"), false, material, appliedForce);
+  };
+
+  // Starts automatic ball spawning
+  static async StartBouncing(parent){
+    this.CreateBall(parent, true);
+    await delay(1000);
+    this.StartBouncing(parent);
   }
 }
 
 
-export function CreateBallFromForm(event){
-  event.preventDefault();
-  const materialName = document.getElementById("Material-Name-Input").value;
-  const materialWeight = document.getElementById("Material-Weight-Input").value / 100;
-  const materialBounce = document.getElementById("Material-Bounce-Input").value / 100;
-  const materialFriction = document.getElementById("Material-Friction-Input").value / 10000;
-  const x = document.getElementById("Applied-Force-X").value / 10;
-  const y = document.getElementById("Applied-Force-Y").value / 10;
+export class MaterialList{
+  // sets the values of the forms to have the same values as selected material from saved materials
+  static updateCurrentMaterial(event){
+    if (!materials[event.target.value]) { return Error("Material is not in list of saved materials."); } 
+    console.log(materials[event.target.value]);
+    document.getElementById("Material-Name-Input").value = materials[event.target.value].materialName;
+    document.getElementById("Material-Weight-Input").value = materials[event.target.value].materialWeight;
+    document.getElementById("Material-Bounce-Input").value = materials[event.target.value].materialBounce;
+    document.getElementById("Material-Friction-Input").value = materials[event.target.value].materialFriction;
+  }
 
-  let material = new Material(materialName, materialWeight, materialBounce, materialFriction);
-  let appliedForce = new Vector2(x,y);
+  // checks for new materials added to the global array materials
+  static updateSavedMaterialsList(){
+    function checkIfMaterialInSelect(materialName, array){
+      for (let option in array){
+        if (savedMaterialSelect.children[option].innerHTML ===  materialName){
+          return true;
+        }
+      }
+      return false;
+    }
+    
+    for (let materialIndex in materials){
+      const materialOption = materials[materialIndex].materialName;
+      const option = document.createElement("option");
+      option.innerHTML = materialOption;
+      option.value = materialIndex;
+      if (checkIfMaterialInSelect(materialOption, savedMaterialSelect.children)){ continue; }
+      savedMaterialSelect.appendChild(option);
+    }
+  }
 
-  CreateBall(document.getElementById("Hero"), false, material, appliedForce);
-};
+  // Saves material to a global array called materials
+  static saveMaterial(event){
+    function getMaterialValuesFromForm(){
+      const materialName = document.getElementById("Material-Name-Input").value;
+      for (let material in materials){
+        if (materials[material].materialName === materialName){
+          throw Error("A material of this name already exists in saved materials.")
+        }
+      }
+  
+      const materialWeight = document.getElementById("Material-Weight-Input").value / 100;
+      const materialBounce = document.getElementById("Material-Bounce-Input").value / 100;
+      const materialFriction = document.getElementById("Material-Friction-Input").value / 1000;
+  
+      return new Material(materialName, materialWeight, materialBounce, materialFriction);
+    }
 
+    event.preventDefault();
+    const materialToSave = getMaterialValuesFromForm()
+    materials.push(materialToSave);
+
+    // cant use this because of the event listener for some reason
+    MaterialList.updateSavedMaterialsList();
+  }
+}
+
+// changes global variables for world settings
 export function AlterWorldEffects(event){
   event.preventDefault();
   const updatedGravity = document.getElementById("Gravity").value / 100;
@@ -249,62 +307,47 @@ export function AlterWorldEffects(event){
   gravity = updatedGravity;
 }
 
-export default async function StartBouncing(parent){
-  CreateBall(parent, true);
-  await delay(1000);
-  StartBouncing(parent);
-}
+const technologies = [
+  new Technology("Javascript", "./source/images/javascript_logo.jpg"),
+  new Technology("Python", "./source/images/python_logo.png", new Vector2(0, 50)),
+  new Technology("CSharp", "./source/images/csharp_logo.png"),
+  new Technology("React", "./source/images/react_logo.jpg"),
+  new Technology("Django", "./source/images/django_logo.png"),
+  // new Technology("TailwindCSS", "./source/images/tailwindcss_logo.jpg"),
+  // new Technology("SASS", "./source/images/sass_logo.png"),
+  // new Technology("Docker", ""), 
+  // new Technology("Git", ""),
+  // new Technology("Bootstrap", ""),
+]
 
-export function updateCurrentMaterial(event){
-  if (!materials[event.target.value]) { return Error("Material is not in list of saved materials."); } 
-  console.log(materials[event.target.value]);
-  document.getElementById("Material-Name-Input").value = materials[event.target.value].materialName;
-  document.getElementById("Material-Weight-Input").value = materials[event.target.value].materialWeight;
-  document.getElementById("Material-Bounce-Input").value = materials[event.target.value].materialBounce;
-  document.getElementById("Material-Friction-Input").value = materials[event.target.value].materialFriction;
-}
 
-export function updateSavedMaterialsList(){
-  for (let materialIndex in materials){
-    const materialOption = materials[materialIndex].materialName;
-    const option = document.createElement("option");
-    option.innerHTML = materialOption;
-    option.value = materialIndex;
-    if (checkIfMaterialInSelect(materialOption, savedMaterialSelect.children)){ continue; }
-    savedMaterialSelect.appendChild(option);
-  }
-}
+// global array of saved materials
+export const materials = [
+  new Material("silly name", 0.3, 0.7, 0)
+]
 
-function checkIfMaterialInSelect(materialName, array){
-  for (let option in array){
-    if (savedMaterialSelect.children[option].innerHTML ===  materialName){
-      return true;
-    }
-  }
-  return false;
-}
+// world settings
+let gravity = 0.3;
+let windStrength = 0;
 
-function getMaterialValuesFromForm(){
-  const materialName = document.getElementById("Material-Name-Input").value;
-  for (let material in materials){
-    if (materials[material].materialName === materialName){
-      throw Error("A material of this name already exists in saved materials.")
-    }
-  }
+// how many physics updates per second.
+const fps = 60;
+const ballRefreshRate = 1000/fps;
 
-  const materialWeight = document.getElementById("Material-Weight-Input").value / 100;
-  const materialBounce = document.getElementById("Material-Bounce-Input").value / 100;
-  const materialFriction = document.getElementById("Material-Friction-Input").value / 1000;
 
-  return new Material(materialName, materialWeight, materialBounce, materialFriction);
-}
-
-export function saveMaterial(event){
-  event.preventDefault();
-  const materialToSave = getMaterialValuesFromForm()
-  materials.push(materialToSave);
-  updateSavedMaterialsList();
-}
-
+// Grabs form elements from document
 export const savedMaterialSelect = document.getElementById("Saved-Material-Select");
 export const physicsMaterialForm = document.getElementById("Physics-Material-Form");
+
+savedMaterialSelect.addEventListener("change", MaterialList.updateCurrentMaterial);
+physicsMaterialForm.addEventListener("submit", MaterialList.saveMaterial);
+
+MaterialList.updateSavedMaterialsList();
+BallSpawning.StartBouncing(document.getElementById("Hero"));
+
+const alterWorldSettingsForm = document.getElementById("World-Settings");
+alterWorldSettingsForm.addEventListener("change", AlterWorldEffects);
+
+
+const createBallForm = document.getElementById("Applied-Force-Form");
+createBallForm.addEventListener("submit", BallSpawning.CreateBallFromForm);

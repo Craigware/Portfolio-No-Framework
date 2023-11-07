@@ -1,31 +1,7 @@
 import LightSwitch from "./source/scripts/lightswitch.js";
 window.LightSwitch = LightSwitch;
 
-
-import StartBouncing, {
-  updateCurrentMaterial,
-  saveMaterial,
-  updateSavedMaterialsList,
-  savedMaterialSelect,
-  physicsMaterialForm,
-  CreateBallFromForm,
-  AlterWorldEffects
-} from "./source/scripts/bouncyballs.js";
-savedMaterialSelect.addEventListener("change", updateCurrentMaterial);
-physicsMaterialForm.addEventListener("submit", saveMaterial);
-
-
-updateSavedMaterialsList();
-StartBouncing(document.getElementById("Hero"));
-
-
-const alterWorldSettingsForm = document.getElementById("World-Settings");
-alterWorldSettingsForm.addEventListener("change", AlterWorldEffects);
-
-
-const createBallForm = document.getElementById("Applied-Force-Form");
-createBallForm.addEventListener("submit", CreateBallFromForm);
-
+import "./source/scripts/bouncyballs.js";
 
 import AlterJobTitle, { TypeWordEffect } from "./source/scripts/typeeffect.js";
 AlterJobTitle(100,100,4000);
@@ -48,28 +24,28 @@ GenerateHeroGrid(heroGrid, cellAmount)
 // GenerateHeroGrid(projectsGrid, cellAmount)
 
 
-async function updateVisibilty(event){
-  if (event.target.tagName === "DIV" || event.target.tagName === "H3") {
-    let childrenVisibility;
-    let animationDelay = 2;
-    event.target.style.transition = `height ${animationDelay}s`
-    if (!event.target.currentVisibility){ 
-      console.log("!")
-      event.target.currentVisibility = true;
-      ballCreationFormContainer.style.height = "0%"; 
-      childrenVisibility = "hidden";
-    } else {
-      console.log("?")
-      event.target.currentVisibility = false;
-      ballCreationFormContainer.style.height = "auto";
+// async function updateVisibilty(event){
+//   if (event.target.tagName === "DIV" || event.target.tagName === "H3") {
+//     let childrenVisibility;
+//     let animationDelay = 2;
+//     event.target.style.transition = `height ${animationDelay}s`
+//     if (!event.target.currentVisibility){ 
+//       console.log("!")
+//       event.target.currentVisibility = true;
+//       ballCreationFormContainer.style.height = "0%"; 
+//       childrenVisibility = "hidden";
+//     } else {
+//       console.log("?")
+//       event.target.currentVisibility = false;
+//       ballCreationFormContainer.style.height = "auto";
     
-      childrenVisibility = "visible";
-    }
-  }
-}
+//       childrenVisibility = "visible";
+//     }
+//   }
+// }
 
-const ballCreationFormContainer = document.getElementById("Ball-Forms-Holder");
-ballCreationFormContainer.addEventListener("click", updateVisibilty)
+// const ballCreationFormContainer = document.getElementById("Ball-Forms-Holder");
+// ballCreationFormContainer.addEventListener("click", updateVisibilty)
 
 // const technicalSkills = document.getElementById("About-Me-Skills");
 // for(let i = 0; i < technicalSkills.children.length; i++){
