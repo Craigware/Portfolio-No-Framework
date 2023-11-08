@@ -1,4 +1,4 @@
-import { Vector2 } from "./bouncyballs.js";
+import { Vector2 } from "./Generic.js";
 
 export function GenerateHeroGrid(element, cellAmount){
   let cellSize = 100 / cellAmount;
@@ -37,3 +37,18 @@ export function GenerateHeroGrid(element, cellAmount){
     `;
   }
 }
+
+const cellAmount = 25;
+const heroGrid = document.getElementById("Hero-Grid");
+// const projectsGrid = document.getElementById("Projects-Grid");
+const grids = [
+  heroGrid,
+  // projectsGrid
+]
+addEventListener("resize", () => {
+  for (let grid in grids){
+    GenerateHeroGrid(grids[grid], cellAmount)
+  }
+})
+GenerateHeroGrid(heroGrid, cellAmount)
+

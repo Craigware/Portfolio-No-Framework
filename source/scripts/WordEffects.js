@@ -1,4 +1,4 @@
-import delay from "./timing.js";
+import delay from "./Generic.js";
 
 // Alternating Job Title Related
 export async function TypeWordEffect(element, word, typeSpeed=100){
@@ -91,8 +91,4 @@ export default function AlterJobTitle(typeSpeed, eraseSpeed, delayBetweenTitles)
   CycleThroughTitles(1, element, jobTitles, typeSpeed, eraseSpeed, delayBetweenTitles);
 }
 
-function Test(element){
-  console.log("!");
-  element.style.right = "100%";
-  element.style.transform = "translate(50%, 0%)";
-}
+AlterJobTitle(100,100,4000);
