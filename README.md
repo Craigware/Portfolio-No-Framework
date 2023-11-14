@@ -13,7 +13,7 @@ problem for myself, and solve it. No frameworks, no copy pasta.
 
 # Future
 I am going to work on documentation later as the project goes on.
-I want to seperate the physics system I made from the project so
+I want to separate the physics system I made from the project so
 maybe I can use it again in the future.
 <br>
 I also want to create my own CSS library as time goes on.
