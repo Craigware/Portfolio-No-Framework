@@ -1,42 +1,19 @@
-# Portfolio-No-Framework
-    My portfolio website! I decided to not use any framework because in the past
-I've always just used Django or React. I will be honest I really liked the
-work flow of it. At least for an individual working solo on a code base.<br>
- <br>
-    I liked being able to create my own file structuring methods, did miss some
-things though. My HTML and CSS files being quite large in development was not
-the most enjoyable.
+# Portfolio No Framework
+Hello, welcome to my portfolio website project. I am creating a
+front end application to showcase a little more personal side of
+me. I've decided not to use a framework with this project because
+I am the solo developer. I would also like to challenge myself 
+without looking up someone elses source code. I want to create a
+problem for myself, and solve it. No frameworks, no copy pasta.
 
-## Features
+# Current Features
+- Physics engine
+- Typing Effect
+- Erasing Effect
 
-### Generic.js
-    Some generic classes and functions for simplicity across multiple files.
-
-#### Classes
-- ##### Vector2(Number x, Number y)
-    Holds two values, useful in a lot of cases.
-    ###### Methods 
-    - Compare(Vector2 Other)
-    - Randomize(Number min, Number max, Array dimension)
-    - RandomizeX()
-    - RandomizeY()
-#### Functions
-- ##### Delay(Number ms)
-    Creates a promise for a timeout of ms milliseconds.
-
-### Techballs
-    Created a physics engine in Javascript because I wanted to have an animation
-of me throwing different techs onto the screen but thought just a generic
-animation would be BORING! So I made it dynamic.
-
-#### Classes
-#### Functions
-
-### Word Effects
-
-#### Classes
-#### Functions
-
-### Scalable Grids
-#### Classes
-#### Functions
+# Future
+I am going to work on documentation later as the project goes on.
+I want to seperate the physics system I made from the project so
+maybe I can use it again in the future.
+<br>
+I also want to create my own CSS library as time goes on.

@@ -51,4 +51,3 @@ addEventListener("resize", () => {
   }
 })
 GenerateHeroGrid(heroGrid, cellAmount)
-

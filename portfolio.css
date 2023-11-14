@@ -13,6 +13,29 @@ p, a, li {
   font-size: 18px;
 }
 
+.webpage-in-development {
+  transition: margin-top 1s, opacity 1s, visibility 1s;
+  background-color: yellow;
+  padding: 1rem;
+  display: flex;
+  position: fixed;
+  width: calc(100vw - 3rem);
+  z-index: 101;
+  align-items: center;
+
+  & .warning-x-button{
+    width: 2rem;
+    height: 2rem;
+    background-color: black;
+    margin-left: auto;
+  }
+
+  & span {
+    font-weight: bold;
+    font-size: 18px;
+  }
+}
+
 :root {
   --navigation_padding: .5rem;
   --navigation_height: 2rem;
@@ -101,9 +124,6 @@ p, a, li {
   }
 }
 
-
-
-
 .sticky-note {
   right: 2.5%;
   top: 5%;
@@ -138,120 +158,6 @@ button {
   margin-top: 5%;
 }
 
-
-.polaroid-container {
-  height: 250px;
-  width: 250px;
-  background-color: white;
-  box-shadow: 5px 5px 10px 1px rgba(0, 0, 0, 0.349);
-  margin: 0.5rem 5rem 0rem 1rem;
-  float: right;
-
-  & img {
-    margin: 1rem 1rem 0rem 1rem;
-    object-fit: cover;
-    width: 220px;
-    height: 180px;
-  }
-
-  & h6{
-    font-family: 'Indie Flower', cursive;
-    margin: .25rem;
-    text-align: center;
-    font-size: 24px;
-    transform: rotate(-5deg);
-  }
-}
-
-/* #About-Me {
-  background-color: var(--highlight_color);
-  border-radius: 10px;
-  margin: 2rem;
-  padding-bottom: 10rem;
-
-  & .about-me-skills {
-    & h3, h2 {
-      display: inline-block;
-      box-shadow: -10px -10px 0px black;
-
-      padding: .25rem;
-      text-align: left;
-      margin-left: 4rem;
-      background-color: var(--foreground_color);
-    }
-
-    & h3{
-      background-color: var(--highlight_color_red);
-    }
-
-    & h2{
-      background-color: var(--highlight_color_orange);
-    }
-
-    & ul {
-      display: grid;
-      grid-template-columns: 33% 33% 33%;
-    }
-
-    & li {
-      list-style-type: circle;
-      margin-left: 3rem;
-    }
-  }
-
-  & h1 {
-    display: inline-block;
-    box-shadow: -10px -10px 0px black;
-    padding: .25rem;
-    text-align: left;
-    margin: 0rem 0rem 2rem 2rem;
-    background-color: var(--foreground_color);
-  }
-
-  & p, ul {
-    background-color: white;
-    margin-top: -.5rem;
-    margin-left: 1rem;
-    margin-right: 1rem;
-    padding: 4.5rem 1rem 2rem 1rem;
-  }
-
-  & p {
-    padding-left: 3rem;    
-  }
-}
-
-#Education {
-  border: 1px solid black;
-  border-radius: 10px;
-  margin: -10rem 2rem 2rem 2rem;
-  padding: 2rem;
-  transform: rotate(-5deg);
-  background-color: white;
-
-  & h1 {
-    border-bottom: 1px solid black;
-  }
-
-  & h2 {
-    padding-top: 1rem;
-    border-bottom: 1px dotted black;
-  }
-
-  & li {
-    list-style-type: circle;
-    margin-left: 2rem;
-  }
-
-  & p {
-    padding-bottom: 1rem;
-  }
-}
-*/
-
-#Projects {
-}
-
 .grid{
   width: 100%;
   height: 100%;
@@ -261,11 +167,69 @@ button {
   & .gridLine {
     transition:
       height 2s,
-      width 2s;
+      width 2s,
+      transform 10s;
 
     position: absolute;
     opacity: 40%;
     height: 1%;
     width: 0%;
+    transform: rotate(0deg);
+  }
+}
+
+#About-Me {
+  padding: 2rem;
+  /* display: flex; */
+  background-image: linear-gradient(lightblue, white);
+}
+
+.card-container {
+  margin: 2rem;
+  background-color: white;
+  padding: 2rem;
+  margin-top: 0;
+
+  box-shadow: -10px 10px 0px rgb(209, 115, 218);
+  /* border: solid black 1px; */
+  border-radius: 10px;
+
+  & .content {
+    display: flex;
+  }
+
+  & img {
+    border-radius: 100%;
+    padding: 1rem;
+    width: 20%;
+    height: 20%;
+    margin: auto;
+  }
+
+  & p {
+    padding: 1rem;
+  }
+
+  & h1, h3, .options {
+    display: inline;
+    cursor: pointer;
+  }
+
+  & h3:first-child{
+    margin-left: 1.4rem;
+  }
+
+  & h3 {
+    margin-left: .75rem;
+  }
+
+  & h1:hover, h3:hover {
+    transition: all 0.5s;
+    color: blue;
+  }
+
+  & .header-options {
+    margin-bottom: 1rem;
+    border-bottom: solid black 1px;
   }
 }

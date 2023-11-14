@@ -28,3 +28,13 @@
 //     currentSelect.style.marginLeft = `calc(4rem + ${i + 1}rem)`;
 //   }
 // }
+
+// addEventListener("scroll", updateNavShadow);
+// function updateNavShadow(){
+//   // if (window.scrollY <= 0){
+//   //   document.getElementById("Navigation").style.boxShadow = "0px 0px 0px black";
+//   //   console.log("!");
+//   // } else {
+//   //   document.getElementById("Navigation").style.boxShadow = "0px 0px 5px rgba(0, 0, 0, 0.404)";
+//   // }
+// }
