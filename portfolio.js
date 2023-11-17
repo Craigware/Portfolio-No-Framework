@@ -11,7 +11,7 @@ async function getComponentByFile(filePath){
 const aboutMe = document.getElementById("About-Me");
 const hobbyOption = aboutMe.getElementsByClassName("option");
 
-function changeContents(event, section){
+function ChangeContents(event, section){
   let content = {};
   if (section === document.getElementById("About-Me")){
     content = {
@@ -31,8 +31,10 @@ function changeContents(event, section){
 }
 
 for (let i = 0; i < hobbyOption.length; i++){
-  hobbyOption[i].addEventListener("click", (e) => {changeContents(e, aboutMe)});
+  hobbyOption[i].addEventListener("click", (e) => {ChangeContents(e, aboutMe)});
 }
+
+window.ChangeContents = ChangeContents;
 
 const defaultContents = aboutMe.getElementsByClassName("content")[0].innerHTML;
 const hobbyContents = await getComponentByFile("./source/components/aboutme/HobbyComponent.html");

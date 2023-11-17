@@ -210,6 +210,16 @@ button {
     padding: 1rem;
   }
 
+  & span, a {
+    font-style: italic;
+    font-size: 15px;
+  }
+
+  & a {
+    cursor: pointer;
+    color: blue;
+  }
+
   & h1, h3, .options {
     display: inline;
     cursor: pointer;
