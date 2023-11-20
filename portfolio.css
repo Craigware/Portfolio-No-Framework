@@ -178,7 +178,7 @@ button {
   }
 }
 
-#About-Me, #Projects {
+#About-Me, #Projects, #Education, #Contact-Information {
   padding: 2rem;
   /* display: flex; */
   
@@ -285,4 +285,8 @@ button {
   & li {
     list-style: none;
   }
+}
+
+#Education {
+
 }
