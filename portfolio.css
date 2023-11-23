@@ -284,9 +284,10 @@ button {
   }
   & li {
     list-style: none;
+    text-align: center;
   }
 }
 
-#Education {
-
+#Contact-Information {
+  background-color: rgb(221, 255, 98);
 }
