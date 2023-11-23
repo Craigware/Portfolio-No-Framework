@@ -290,3 +290,9 @@ button {
 #Education {
 
 }
+
+#Contact-Information{
+  & Object{
+    
+  }
+}
