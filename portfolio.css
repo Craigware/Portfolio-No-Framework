@@ -151,7 +151,33 @@ p, a, li {
     display: block;
     width: 100%;
   }
+
+  & input, button {
+    all: unset;
+    border: black 1px solid;
+  }
+
+  & input[type=range]{
+    border-radius: 2rem;
+    background-color: white;
+  }
+
+  & input[type=text]{
+    background-color: white;
+  }
+
+  & button {
+    margin-top: 1rem;
+    padding: .5rem;
+    background-color: white;
+  }
+
+  & button::-webkit-slider-thumb, button::-moz-range-thumb{
+    border-radius: 100%;
+    background-color: white;
+  }
 }
+
 
 button {
   padding: 2%;
@@ -214,8 +240,7 @@ button {
   & img {
     border-radius: 100%;
     padding: 1rem;
-    width: 20%;
-    height: 20%;
+    object-fit: contain;
     margin: auto;
   }
 
