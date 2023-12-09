@@ -158,7 +158,9 @@ p, a, li {
   }
 
   & input[type=range]{
+    appearance: none;
     border-radius: 2rem;
+    cursor: pointer;
     background-color: white;
   }
 
@@ -172,9 +174,8 @@ p, a, li {
     background-color: white;
   }
 
-  & button::-webkit-slider-thumb, button::-moz-range-thumb{
-    border-radius: 100%;
-    background-color: white;
+  & button::-webkit-slider-thumb {
+    border-radius: 0%;
   }
 }
 
