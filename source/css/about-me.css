@@ -1,71 +1,49 @@
 #About-Me {
-    background-image: linear-gradient(lightblue, white);
-  }
-  
-  .card-container {
-    margin: 2rem;
-    background-color: white;
-    padding: 2rem;
-    margin-top: 0;
-  
-    box-shadow: -10px 10px 0px rgb(209, 115, 218);
-    /* border: solid black 1px; */
+    background-color: var(--background_color);
+    border: var(--foreground_color) 1px solid;
     border-radius: 10px;
-  
+    box-shadow: -10px 10px 0px var(--foreground_color);
+    margin: 2rem;
+    padding: 2rem;
+
+
     & .content {
-      display: flex;
+        display: grid;
+        grid-template-columns: 80% 20%;
+        place-items: center;
+        border-top: 1px solid var(--foreground_color);
     }
-  
-    & ul {
-      margin-left: 1rem;
+
+
+
+    & .header-options .option {
+        display: inline-block;
+        margin-left: 1rem;
     }
-  
-    & li {
-      font-weight: bold;
-      list-style: none;
+
+    & .header-options .option:first-child {
+        margin-left: 0rem;
+        display: block;
     }
-  
-    & img {
-      border-radius: 100%;
-      padding: 1rem;
-      object-fit: contain;
-      margin: auto;
+
+    & .image-container {
+        width: 15rem;
+        height: 15rem;
+        object-fit: contain;
+        justify-content: center;
+        overflow: hidden;
+        border-radius: 100%;
+        box-shadow: -10px 10px 0px var(--foreground_color);
+        border: var(--foreground_color) 1px solid;
+
+        & img {
+            width: 100%;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            transform: scale(1.25) translate(10px, -10px);
+        }
     }
-  
-    & p {
-      padding: 1rem;
-    }
-  
-    & span, a {
-      font-style: italic;
-      font-size: 15px;
-    }
-  
-    & a {
-      cursor: pointer;
-      color: blue;
-    }
-  
-    & h1, h3, .options {
-      display: inline;
-      cursor: pointer;
-    }
-  
-    & h3:first-child{
-      margin-left: 1.4rem;
-    }
-  
-    & h3 {
-      margin-left: .75rem;
-    }
-  
-    & h1:hover, h3:hover {
-      transition: all 0.5s;
-      color: blue;
-    }
-  
-    & .header-options {
-      margin-bottom: 1rem;
-      border-bottom: solid black 1px;
-    }
-  }
+
+
+}

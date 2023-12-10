@@ -25,10 +25,8 @@ p, a, li {
   --background_color: white;
   --text_color: black;
   --foreground_color: lightblue;
-  --shadow_color: ;
+  --shadow_color: rgba(0, 0, 0, 0.37);
   --highlight_color: #ffff99;
-  --highlight_color_red: #FD8A8A;
-  --highlight_color_orange: #ecb164;
 
   background-color: var(--background_color);
   color: var(--text_color);
@@ -37,5 +35,4 @@ p, a, li {
 #About-Me, #Projects, #Education, #Contact-Information {
   padding: 2rem;
   /* display: flex; */
-  
 }
