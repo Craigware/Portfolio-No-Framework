@@ -1,0 +1,30 @@
+#Projects{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+  
+  .project-container {
+    margin: 2rem;
+    padding: 1rem;
+    border: 1px solid black;
+    border-radius: 10px;
+    height: 25%;
+    width: 25%;
+  
+    & h1 {
+      margin-top: .5rem;
+    }
+  
+    & p {
+      margin: .5rem;
+    }
+  
+    & ul {
+      margin: 0% 25% 0% 25%;
+    }
+    & li {
+      list-style: none;
+      text-align: center;
+    }
+  }

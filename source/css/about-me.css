@@ -1,0 +1,71 @@
+#About-Me {
+    background-image: linear-gradient(lightblue, white);
+  }
+  
+  .card-container {
+    margin: 2rem;
+    background-color: white;
+    padding: 2rem;
+    margin-top: 0;
+  
+    box-shadow: -10px 10px 0px rgb(209, 115, 218);
+    /* border: solid black 1px; */
+    border-radius: 10px;
+  
+    & .content {
+      display: flex;
+    }
+  
+    & ul {
+      margin-left: 1rem;
+    }
+  
+    & li {
+      font-weight: bold;
+      list-style: none;
+    }
+  
+    & img {
+      border-radius: 100%;
+      padding: 1rem;
+      object-fit: contain;
+      margin: auto;
+    }
+  
+    & p {
+      padding: 1rem;
+    }
+  
+    & span, a {
+      font-style: italic;
+      font-size: 15px;
+    }
+  
+    & a {
+      cursor: pointer;
+      color: blue;
+    }
+  
+    & h1, h3, .options {
+      display: inline;
+      cursor: pointer;
+    }
+  
+    & h3:first-child{
+      margin-left: 1.4rem;
+    }
+  
+    & h3 {
+      margin-left: .75rem;
+    }
+  
+    & h1:hover, h3:hover {
+      transition: all 0.5s;
+      color: blue;
+    }
+  
+    & .header-options {
+      margin-bottom: 1rem;
+      border-bottom: solid black 1px;
+    }
+  }
