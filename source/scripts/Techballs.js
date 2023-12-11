@@ -200,11 +200,10 @@ export class MaterialList{
   // sets the values of the forms to have the same values as selected material from saved materials
   static updateCurrentMaterial(event){
     if (!materials[event.target.value]) { return Error("Material is not in list of saved materials."); } 
-    console.log(materials[event.target.value]);
     document.getElementById("Material-Name-Input").value = materials[event.target.value].materialName;
-    document.getElementById("Material-Weight-Input").value = materials[event.target.value].materialWeight;
-    document.getElementById("Material-Bounce-Input").value = materials[event.target.value].materialBounce;
-    document.getElementById("Material-Friction-Input").value = materials[event.target.value].materialFriction;
+    document.getElementById("Material-Weight-Input").value = materials[event.target.value].weight * 100;
+    document.getElementById("Material-Bounce-Input").value = materials[event.target.value].bounciness * 100;
+    document.getElementById("Material-Friction-Input").value = materials[event.target.value].friction * 1000;
   }
 
   // checks for new materials added to the global array materials
