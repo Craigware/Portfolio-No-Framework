@@ -84,7 +84,8 @@ export default function AlterJobTitle(typeSpeed, eraseSpeed, delayBetweenTitles)
     "Web Developer",
     "Graphic Designer",
     "Game Designer",
-    "Game Developer"
+    "Game Developer",
+    "Plugin Developer"
   ];
   const element = document.getElementById("Alternating-Job-Title");
 

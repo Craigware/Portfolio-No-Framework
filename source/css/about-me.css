@@ -1,49 +1,93 @@
 #About-Me {
     background-color: var(--background_color);
-    border: var(--foreground_color) 1px solid;
     border-radius: 10px;
-    box-shadow: -10px 10px 0px var(--foreground_color);
     margin: 2rem;
     padding: 2rem;
+}
 
 
-    & .content {
-        display: grid;
-        grid-template-columns: 80% 20%;
-        place-items: center;
-        border-top: 1px solid var(--foreground_color);
-    }
+#About-Me .content {
+    border-top: 1px solid var(--foreground_color);
+}
+
+
+#About-Me .header-options {
+    margin-bottom: .5rem;
+}
 
 
 
-    & .header-options .option {
-        display: inline-block;
-        margin-left: 1rem;
-    }
+#About-Me .header-options .option {
+    display: inline-block;
+    margin-left: 1rem;
+}
 
-    & .header-options .option:first-child {
-        margin-left: 0rem;
-        display: block;
-    }
+#About-Me .header-options .option:first-child {
+    margin-left: 0rem;
+    display: block;
+}
 
-    & .image-container {
-        width: 15rem;
-        height: 15rem;
-        object-fit: contain;
-        justify-content: center;
-        overflow: hidden;
-        border-radius: 100%;
-        box-shadow: -10px 10px 0px var(--foreground_color);
-        border: var(--foreground_color) 1px solid;
+#About-Me h3:hover, #About-Me h1:hover{
+    color: blue;
+    cursor: pointer;
+}
 
-        & img {
-            width: 100%;
-            display: block;
-            margin-left: auto;
-            margin-right: auto;
-            transform: scale(1.25) translate(10px, -10px);
-        }
-    }
+#About-Me h2 {
+    margin: 8px 0;
+}
 
+#About-Me .image-container{
+    width: 15rem;
+    height: 15rem;
+    object-fit: contain;
+    justify-content: center;
+    overflow: hidden;
+    border-radius: 100%;
+    box-shadow: -10px 10px 0px var(--foreground_color);
+    border: var(--foreground_color) 1px solid;
+}
 
+#About-Me .image-container img{
+    width: 100%;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    transform: scale(1.25) translate(10px, -10px);
+}
+
+#About-Me .skill-list-container{
+    margin: 1rem;
+}
+
+#About-Me .skill-list{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+#About-Me .skill-list-container h3{
+    border-bottom: 1px solid var(--foreground_color);
+    margin-bottom: 2px;
+}
+#About-Me .skill-list-container h3:hover{
+    color: unset;
+    cursor: unset;
+}
+
+#About-Me .skill-list li{
+    margin: 0;
+    padding-left: 4px;
+    font-weight: 400;
+    border-bottom: 1px solid var(--foreground_color);
+    padding-bottom: 2px;
+}
+
+#About-Me ul li{
+    list-style: none;
+    font-weight: bold;
+    margin-left: .5rem;
+}
+
+#About-Me ul p {
+    margin: 8px 0;
+    margin-left: 1.5rem;
 }

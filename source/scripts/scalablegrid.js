@@ -9,45 +9,52 @@ export function GenerateHeroGrid(element, cellAmount){
     offsets.x = element.clientHeight / element.clientWidth;
   } else {
     offsets.y = element.clientWidth / element.clientHeight;
+    
   }
 
-  for (let i = 0; i < cellAmount; i++){
+  let i = 0
+  while (i * cellSize * offsets.x < 100){
     const gridLine = document.createElement("div")
     gridLine.classList.add("gridLine");
     element.appendChild(gridLine);
     gridLine.style.cssText = `
       width: 1px;
       height: 100%;
-      background-color: white;
+      background-color: var(--background_color);
       right: ${i * cellSize * offsets.x}%;
       z-index: 0;
     `;
+    i++;
   }
 
-  for (let i = 0; i < cellAmount; i++){
+  i = 0
+  while (i * cellSize * offsets.y < 100){
     const gridLine = document.createElement("div")
     gridLine.classList.add("gridLine");
     element.appendChild(gridLine);
     gridLine.style.cssText = `
       width: 100%;
       height: 1px;
-      background-color: white;
+      background-color: var(--background_color);
       bottom: ${i * cellSize * offsets.y}%;
       z-index: 0;
     `;
+    i++;
   }
 }
 
 const cellAmount = 25;
-const heroGrid = document.getElementById("Hero-Grid");
-// const projectsGrid = document.getElementById("Projects-Grid");
 const grids = [
-  heroGrid,
-  // projectsGrid
+  document.getElementById("Hero-Grid"),
+  document.getElementById("Projects-Grid"),
+  document.getElementById("Resume-Grid")
 ]
 addEventListener("resize", () => {
   for (let grid in grids){
     GenerateHeroGrid(grids[grid], cellAmount)
   }
 })
-GenerateHeroGrid(heroGrid, cellAmount)
+
+for (let grid in grids){
+    GenerateHeroGrid(grids[grid], cellAmount)
+}

@@ -18,11 +18,11 @@
       <a href="#About-Me" class="navbar-item">About-Me</a>
       <a href="#Projects" class="navbar-item">Projects</a>
       <a href="#Education" class="navbar-item">Education</a>
-      <a href="#Contact-Information" class="navbar-item">Contact Information</a>
       <a href="#Resume" class="navbar-item">Resume</a>
+      <a href="#Contact-Information" class="navbar-item">Contact Information</a>
       <div class="socials">
-        <a target="_blank" href="https://www.github.com/Craigware" class="navbar-item navbar-logo"><img alt="Github Logo" src="./source/images/github-mark-white.svg"/></a>
-        <a target="_blank" href="https://www.linkedin.com/in/craig-johnson-jr/" class="navbar-item navbar-logo"><img alt="LinkedIn Logo" src="./source/images/LI-In-Bug.png"/></a>
+        <a target="_blank" href="https://www.github.com/Craigware" class="navbar-item navbar-logo"><img alt="Github Logo" src="./source/images/icons/github-mark-white.svg"/></a>
+        <a target="_blank" href="https://www.linkedin.com/in/craig-johnson-jr/" class="navbar-item navbar-logo"><img alt="LinkedIn Logo" src="./source/images/icons/LI-In-Bug.png"/></a>
       </div>
     </nav>
     <div id="Top" class="navbar-spacer"></div>
@@ -35,94 +35,116 @@
         <h1>I am a <span id="Alternating-Job-Title"></span></h1>
       </div>
 
-      <div onclick="" id="Ball-Forms-Holder" class="sticky-note">
-        <h3>Create a Bouncy Ball</h3>
         <form id="World-Settings">
-          <h4>World Settings <span>(Updates on change)</span></h4>
-          <label for="materialBounciness">Gravity</label>
+          <label for="Gravity">Gravity</label>
           <input id="Gravity" type="range" min="0" max="100" value="30"/>
           
-          <label for="materialBounciness">Wind Strength</label>
+          <label for="Wind-Strength">Wind Strength</label>
           <input id="Wind-Strength" type="range" min="-100" max="100" value="0"/>
         </form>
-        <form id="Physics-Material-Form">
-          <h4>Physics Material</h4>
-          <label for="materialFromSaved">Saved Material</label>
-          <select id="Saved-Material-Select">
-            <option>None</option>
-          </select>
-          <label for="materialName">Material Name</label>
-          <input id="Material-Name-Input" name="materialName" type="text" />
-          <label for="materialWeight">Material Weight</label>
-          <input id="Material-Weight-Input" type="range" min="1" max="200" value="50"/>
-          <label for="materialBounciness">Material Bounciness</label>
-          <input id="Material-Bounce-Input" type="range" min="0" max="100" value="80"/>
-          <label for="materialFriction">Material Friction</label>
-          <input id="Material-Friction-Input" type="range" min="0" max="100" value="1"/>
-          <button>Save Material</button>
-        </form>
-        <form id="Applied-Force-Form">
-          <h4>Initial Applied Force</h4>
-          <label for="appliedForceX">Applied Force X</label>
-          <input id="Applied-Force-X" type="range" min="0" max="100" value="10"/>
-          <label for="appliedForceY">Applied Force Y</label>
-          <input id="Applied-Force-Y" type="range" min="0" max="100" value="20"/>
-          <button>Create</button>
-        </form>
-      </div>
+
+        <div id="Ball-Creation">
+            <h2>Create A Bouncy Ball</h2>
+            <form id="Physics-Material-Form">
+                <label for="Saved-Material-Select">Saved Materials</label>
+                <select id="Saved-Material-Select">
+                    <option>None</option>
+                </select>
+                <label for="Material-Name-Input">Material Name</label>
+                <input id="Material-Name-Input" name="materialName" type="text" placeholder="Material's Name..."/>
+                <label for="Material-Weight-Input">Material Weight</label>
+                <input id="Material-Weight-Input" type="range" min="1" max="200" value="50"/>
+                <label for="Material-Bounce-Input">Material Bounciness</label>
+                <input id="Material-Bounce-Input" type="range" min="0" max="100" value="80"/>
+                <label for="Material-Friction-Input">Material Friction</label>
+                <input id="Material-Friction-Input" type="range" min="0" max="100" value="1"/>
+                <button>Save Material</button>
+            </form>
+            <form id="Applied-Force-Form">
+                <label for="Applied-Force-X">Applied Force X</label>
+                <input id="Applied-Force-X" type="range" min="0" max="100" value="10"/>
+                <label for="Applied-Force-Y">Applied Force Y</label>
+                <input id="Applied-Force-Y" type="range" min="0" max="100" value="20"/>
+                <button>Create</button>
+            </form>
+        </div>
     </div>
 
     <div id="About-Me">
       <div class="card-container">
         <div class="header-options">
           <h1 class="option" value="default">#About-Me</h1>
-            <h3 class="option" value="hobbies">Hobbies</h3>
-            <h3 class="option" value="goals">Goals</h3>
+
+            <h3 class="option" value="technical-skills">Technical Skills</h3>
             <h3 class="option" value="soft-skills">Soft Skills</h3>
-            <h3 class="option" value="dog-pictures">Technical Skills</h3>
-            <h3 class="option" value="doodle-gallery">Doodle Gallery</h3>
+
+            <h3 class="option" value="goals">Goals</h3>
+            <h3 class="option" value="hobbies">Hobbies</h3>
         </div>
 
         <div class="content">
-          <p>
-            I am an artist turned web developer. I started taking coding more
-            seriously when I was in college because I wanted to make my artwork interactive. Front-end development and
-            game development has been my favorite outlets for such. Through my experience learning I have come to find
-            out I very much enjoy all aspects of software development. The creativity and problem solving of front-end
-            is very engaging for me while the organization and management of data has proven to be quite satisfying in 
-            the back-end.<br>
-            <br>
-            I am currently looking for an entry or junior level position in either front-end development, back-end development
-            or full-stack development. My favorite frameworks to use have been React for front-end, and FastAPI or Django for back-end.
-            Although I do love learning different technologies, I currently have specific interest in learning ASP.NET due to C# being
-            my favorite programming language. 
-          </p>
-          <div class="image-container">
-            <img src=".\source\images\me.jpg" />
+          <div style="
+            display: grid;
+            grid-template-columns: 80% 20%;
+            place-items: center;
+            padding: 10px;
+          ">
+            <p>
+              I am an artist turned web developer. I started taking coding more
+              seriously when I was in college because I wanted to make my artwork interactive. Front-end development and
+              game development has been my favorite outlets for such. Through my experience learning I have come to find
+              out I very much enjoy all aspects of software development. The creativity and problem solving of front-end
+              is very engaging for me while the organization and management of data has proven to be quite satisfying in 
+              the back-end.<br>
+              <br>
+              I am currently looking for an entry or junior level position in either front-end development, back-end development
+              or full-stack development. My favorite frameworks to use have been React for front-end, and FastAPI or Django for back-end.
+              Although I do love learning different technologies, I currently have specific interest in learning ASP.NET due to C# being
+              my favorite programming language. 
+            </p>
+            <div class="image-container">
+              <img src=".\source\images\me_but_different.jpg" />
+            </div>
           </div>
         </div>
       </div>
     </div>
+
+    
     <div id="Projects">
+      <div id="Projects-Grid" class="grid">
+      </div>
       <div class="project-container">
-        <h1>Task Tracking</h1>
-        <div>image Carousel</div>
-        <p>Task Tracking is a simple task tracking application,
-          designed for individuals or for collaboration. Sporting
-          milestone progress, individual progress, recently completed
-          tasks, task history, accounts and more.
+        <h1>Doodle Gallery</h1>
+        <a class="link" target="_blank" href="https://CraigJ.Art">Website Link</a> 
+         | 
+        <a class="link" target="_blank" href="https://github.com/Craigware/Doodle-Gallery">Repo Link</a>
+        <img src="./source/images/screenshots/doodle-gallery.png" />
+        <p>A "simple" gallery application for sharing
+            some of my artworks with friends. Uses Nginx
+            as a web server and reverse proxy. Python
+            and FastAPI for storing images in an external
+            volume.
         </p>
         
         <ul>
           <li>Python</li>
-          <li>Django</li>
+          <li>FastAPI</li>
           <li>HTML</li>
           <li>CSS</li>
+          <li>Javascript</li>
+          <li>Nginx</li>
+          <li>Docker</li>
+          <li>MySQL</li>
+          <li>SSL</li>
         </ul>
       </div>
       <div class="project-container">
         <h1>Goldn Hour</h1>
-        <div>image Carousel</div>
+        <a class="link" target="_blank" href="https://squad-core.gitlab.io/goldn-hours/">Website Link</a>
+          | 
+        <a class="link" target="_blank" href="https://gitlab.com/squad-core/goldn-hours">Repo Link</a>
+        <img src="./source/images/screenshots/goldnhours.png" />
         <p>A social media designed for photographers. See local pictures
           posted on a map and indicate the current site conditions. Crowd
           sourcing site conditions, know if traveling to the site is worthwhile.
@@ -136,11 +158,13 @@
           <li>Javascript</li>
         </ul>
       </div>
+      
       <div class="project-container">
-        <h1>Car^2</h1>
-        <div>image Carousel</div>
-        <p>Car^2 is a car dealership management assistant. Organize your inventory,
-          track employee sales, and schedule vehicle maintenance. Car^2 
+        <h1>CarCar</h1>
+        <a class="link" target="_blank" href="https://gitlab.com/Craigware/carcar">Repo Link</a>
+        <img src="./source/images/screenshots/car2.png" />
+        <p>CarCar is a car dealership management assistant. Organize your inventory,
+          track employee sales, and schedule vehicle maintenance.
         </p>
         
         <ul>
@@ -150,11 +174,16 @@
           <li>Javascript</li>
           <li>JSX</li>
           <li>Bootstrap</li>
+          <li>Docker</li>
         </ul>
       </div>
       <div class="project-container">
         <h1>Portfolio</h1>
-        <div>image Carousel</div>
+
+        <a class="link">Website Link</a>
+         | 
+        <a class="link" target="_blank" href="https://github.com/Craigware/Portfolio-No-Framework">Repo Link</a>
+        <img src="./source/images/screenshots/Portfolio.png" />
         <p>You are looking at it! Contains a lot of neat features. A physics system
           takes place inside the hero element, allowing for dynamic bouncy ball interactions,
           A typing effect with random side effects, and complex animations. All using base
@@ -169,58 +198,68 @@
       </div>
       <div class="project-container">
         <h1>Complet</h1>
-        <div>image Carousel</div>
+        <a class="link">Repo Link</a>
+        <img src="./source/images/screenshots/complet.png" />
         <p>Complet is a video game review site, share reviews and comment on
           others. Complet has a library of reviewable games spanning across 
           multiple marketplaces by default. Suggest a game that isn't added,
           get suggested games to play based off of your review history, and
           hear about game development news from followed developers.
         </p>
-        
         <ul>
           <li>Python</li>
           <li>Javascript</li>
           <li>React</li>
-          <li></li>
           <li>FastAPI</li>
           <li>JSX</li>
           <li>CSS</li>
+          <li>Docker</li>
         </ul>
       </div>
     </div>
 
+    
     <div id="Education">
       <h1>Education</h1>
-      <h2>Hack Reactor</h2>
-      <p>I took the Galvanize Hack Reactor 19 Week Javascript and Python Development Boot Camp in 2023, and I loved my experience.
-        I worked in a large class of around 70 like minded individuals with 9 different mentors to learn a lot about software development.
-        During my boot camp I-
-      </p>
-      <ul>
-        <li>Created full-stack applications using React, Django, and FastAPI to create web projects for task tracking, recipe sharing, car dealership management, and location based photo sharing.</li>
-        <li>Used Docker and Git to allow for seamless contributions to projects between different machines. Focused on concise commit messages and branching to ensure a proper productive workflow.</li>
-        <li>Used relational and non relation databases in order to store data. Used Django's default database for 30% of my projects working with the in system migrations, 20% using SQL and Postgres with a detached database, and 50% using MongoDB.</li>
-      </ul>
-    
-      <h2>Palm Beach State College</h2>
-      <p>When I first finished high school I immediately started college with a focus on graphic design at Palm Beach State. Unfortunately my
-        time there was cut short by the Covid pandemic but I enjoyed my time all the same. I-
-      </p>
-      <ul>
-        <li>Worked on graphics using Adobe Illustrator and Photoshop centered around the protection of environments and what part specific 
-          animals play in ecosystems.
-        </li>
-        <li>Developed graphics for novels of fabricated origins, my favorites consisting of novels focusing on traveling around different 
-          countries, Japan, Norway, Etc.. using Adobe Illustrator and Photoshop.
-        </li>
-        <li>Used color theory and framing strategies to convey emotion through graphics. My strategies include, the rule of thirds, 
-          analogous color theory, and Ambiguous imagery. 
-        </li>
-      </ul>
+      <div class="educations">
+        <div>
+          <h2>Hack Reactor</h2>
+          <p>I took the Galvanize Hack Reactor 19 Week Javascript and Python Development Boot Camp in 2023, and I loved my experience.
+          </p>
+          <ul>
+            <li>Created full-stack applications using React, Django, and FastAPI to create web projects for task tracking, recipe sharing, car dealership management, and location based photo sharing.</li>
+            <li>Used Docker and Git to allow for seamless contributions to projects between different machines. Focused on concise commit messages and branching to ensure a proper productive workflow.</li>
+            <li>Used relational and non relation databases in order to store data. Used Django's default database for 30% of my projects working with the in system migrations, 20% using SQL and Postgres with a detached database, and 50% using MongoDB.</li>
+          </ul>
+        </div>
+        
+        <div>
+          <h2>Palm Beach State College</h2>
+          <p>When I first finished high school I immediately started college with a focus on graphic design at Palm Beach State.
+          </p>
+          <ul>
+            <li>Worked on graphics using Adobe Illustrator and Photoshop centered around the protection of environments and what part specific 
+              animals play in ecosystems.
+            </li>
+            <li>Developed graphics for novels of fabricated origins, my favorites consisting of novels focusing on traveling around different 
+              countries, Japan, Norway, Etc.. using Adobe Illustrator and Photoshop.
+            </li>
+            <li>Used color theory and framing strategies to convey emotion through graphics. My strategies include, the rule of thirds, 
+              analogous color theory, and ambiguous imagery. 
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
+
+    <div id="Resume">
+      <div id="Resume-Grid" class="grid">
+      </div>
+      <iframe src="./source/images/Craig Resume.pdf" width="80%" height="1130px"></iframe>
+    </div>
+
     <div id="Contact-Information">
       <h2>Contact Information</h2>  
-      <p>In Page Contact</p>
       <p>+1(561) 281-7485</p>
       <p>CraigJArt@gmail.com</p>
       <a href="https://www.linkedin.com/in/craig-johnson-jr/" target="_blank">LinkedIn</a>
@@ -228,8 +267,6 @@
       <a href="https://www.youtube.com/channel/UCfzV_qY-W6XX0sMQ_TFr-zQ" target="_blank">Youtube</a>
       <a href="https://github.com/craigware" target="_blank">Github</a>
       <a href="https://gitlab.com/craigware" target="_blank">Gitlab</a>
-      <h2>Resume</h2>
-      <iframe id="Resume" src="./source/images/Craig Resume.pdf" width="100%" height="1080px"></iframe>
     </div>
     
   </main>
@@ -239,7 +276,3 @@
 </footer>
 </html>
 
-        <!-- <div style="transform: rotate(20deg);" class="polaroid-container">
-          <img src="./source/images/my_face.jpg" />
-          <h6>This is ME<span>!</span></h6> -->
-        <!-- </div> -->

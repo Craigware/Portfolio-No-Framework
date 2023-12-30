@@ -2,7 +2,9 @@
 @import "./source/css/navigation.css";
 @import "./source/css/hero.css";
 @import "./source/css/about-me.css";
+@import "./source/css/education.css";
 @import "./source/css/projects.css";
+@import "./source/css/resume.css";
 
 
 * {
@@ -32,7 +34,10 @@ p, a, li {
   color: var(--text_color);
 }
 
-#About-Me, #Projects, #Education, #Contact-Information {
+input {
+    all: unset;
+}
+
+#About-Me, #Education, #Contact-Information {
   padding: 2rem;
-  /* display: flex; */
 }

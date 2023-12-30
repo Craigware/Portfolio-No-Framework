@@ -13,8 +13,7 @@ function ChangeContents(event, section){
       "hobbies": hobbyContents,
       "goals": goalsContents,
       "soft-skills": softSkillsContents,
-      "dog-pictures": "3",
-      "doodle-gallery": "4"
+      "technical-skills": technicalSkillsContents
     };
   }
   
@@ -34,3 +33,4 @@ const defaultContents = aboutMe.getElementsByClassName("content")[0].innerHTML;
 const hobbyContents = await getComponentByFile("./source/components/aboutme/HobbyComponent.html");
 const goalsContents = await getComponentByFile("./source/components/aboutme/GoalsComponent.html");
 const softSkillsContents = await getComponentByFile("./source/components/aboutme/SoftSkillsComponent.html");
+const technicalSkillsContents = await getComponentByFile("./source/components/aboutme/TechnicalSkillsComponent.html");

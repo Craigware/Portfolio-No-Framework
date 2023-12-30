@@ -200,11 +200,10 @@ export class MaterialList{
   // sets the values of the forms to have the same values as selected material from saved materials
   static updateCurrentMaterial(event){
     if (!materials[event.target.value]) { return Error("Material is not in list of saved materials."); } 
-    console.log(materials[event.target.value]);
     document.getElementById("Material-Name-Input").value = materials[event.target.value].materialName;
-    document.getElementById("Material-Weight-Input").value = materials[event.target.value].materialWeight;
-    document.getElementById("Material-Bounce-Input").value = materials[event.target.value].materialBounce;
-    document.getElementById("Material-Friction-Input").value = materials[event.target.value].materialFriction;
+    document.getElementById("Material-Weight-Input").value = materials[event.target.value].weight * 100;
+    document.getElementById("Material-Bounce-Input").value = materials[event.target.value].bounciness * 100;
+    document.getElementById("Material-Friction-Input").value = materials[event.target.value].friction * 1000;
   }
 
   // checks for new materials added to the global array materials
@@ -241,7 +240,7 @@ export class MaterialList{
       const materialWeight = document.getElementById("Material-Weight-Input").value / 100;
       const materialBounce = document.getElementById("Material-Bounce-Input").value / 100;
       const materialFriction = document.getElementById("Material-Friction-Input").value / 1000;
-  
+
       return new Material(materialName, materialWeight, materialBounce, materialFriction);
     }
 
@@ -251,6 +250,7 @@ export class MaterialList{
 
     // cant use this because of the event listener for some reason
     MaterialList.updateSavedMaterialsList();
+    savedMaterialSelect.value = materials.indexOf(materialToSave);
   }
 }
 
@@ -264,11 +264,11 @@ export function AlterWorldEffects(event){
 }
 
 const technologies = [
-  new Technology("Javascript", "./source/images/javascript_logo.jpg"),
-  new Technology("Python", "./source/images/python_logo.png", new Vector2(0, 50)),
-  new Technology("CSharp", "./source/images/csharp_logo.png"),
-  new Technology("React", "./source/images/react_logo.jpg"),
-  new Technology("Django", "./source/images/django_logo.png"),
+  new Technology("Javascript", "./source/images/icons/javascript_logo.jpg"),
+  new Technology("Python", "./source/images/icons/python_logo.png", new Vector2(0, 50)),
+  new Technology("CSharp", "./source/images/icons/csharp_logo.png"),
+  new Technology("React", "./source/images/icons/react_logo.jpg"),
+  new Technology("Django", "./source/images/icons/django_logo.png"),
   // new Technology("TailwindCSS", "./source/images/tailwindcss_logo.jpg"),
   // new Technology("SASS", "./source/images/sass_logo.png"),
   // new Technology("Docker", ""), 
@@ -279,7 +279,7 @@ const technologies = [
 
 // global array of saved materials
 export const materials = [
-  new Material("silly name", 0.3, 0.7, 0)
+  new Material("Base Material", 0.3, 0.7, 0)
 ]
 
 // world settings

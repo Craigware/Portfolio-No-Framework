@@ -1,0 +1,21 @@
+#Education {
+    padding: 2rem;
+}
+
+#Education .educations {
+    display: grid;
+    grid-template-columns: 50% 50%;
+}
+
+#Education h2{
+    margin: 1rem 0 0.5rem 0;
+}
+
+#Education p {
+    margin-right: 1rem;
+}
+
+#Education li {
+    margin: 0.5rem 2rem;
+    list-style:circle;
+}

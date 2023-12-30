@@ -1,0 +1,17 @@
+#Resume {
+    background-color: var(--foreground_color);
+    box-shadow: inset 0 10px  20px var(--shadow_color);
+    padding: 0 1rem;
+    position: relative;
+    overflow: hidden;
+}
+
+#Resume iframe {
+    padding: 1rem 0;
+    position: inherit;
+    display: block;
+    margin: 1rem auto;
+    border: unset;
+    z-index: 1;
+}
+
