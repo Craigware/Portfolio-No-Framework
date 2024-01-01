@@ -2,7 +2,6 @@
     background-color: var(--background_color);
     border-radius: 10px;
     margin: 2rem;
-    padding: 2rem;
 }
 
 
@@ -14,8 +13,6 @@
 #About-Me .header-options {
     margin-bottom: .5rem;
 }
-
-
 
 #About-Me .header-options .option {
     display: inline-block;
@@ -36,7 +33,7 @@
     margin: 8px 0;
 }
 
-#About-Me .image-container{
+#About-Me .image-container {
     width: 15rem;
     height: 15rem;
     object-fit: contain;
@@ -47,7 +44,7 @@
     border: var(--foreground_color) 1px solid;
 }
 
-#About-Me .image-container img{
+#About-Me .image-container img {
     width: 100%;
     display: block;
     margin-left: auto;
@@ -55,25 +52,42 @@
     transform: scale(1.25) translate(10px, -10px);
 }
 
-#About-Me .skill-list-container{
+#About-Me .skill-list-container {
     margin: 1rem;
 }
 
-#About-Me .skill-list{
+#About-Me .technical-skills {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
-#About-Me .skill-list-container h3{
+#About-Me .skill-list {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+@media screen and (max-width: 1300px) {
+    #About-Me .technical-skills{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 700px) {
+    #About-Me .technical-skills{
+        grid-template-columns: repeat(1, 1fr);
+    }
+}
+
+#About-Me .skill-list-container h3 {
     border-bottom: 1px solid var(--foreground_color);
     margin-bottom: 2px;
 }
-#About-Me .skill-list-container h3:hover{
+#About-Me .skill-list-container h3:hover {
     color: unset;
     cursor: unset;
 }
 
-#About-Me .skill-list li{
+#About-Me .skill-list li {
     margin: 0;
     padding-left: 4px;
     font-weight: 400;
@@ -81,7 +95,7 @@
     padding-bottom: 2px;
 }
 
-#About-Me ul li{
+#About-Me ul li {
     list-style: none;
     font-weight: bold;
     margin-left: .5rem;

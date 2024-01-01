@@ -38,6 +38,6 @@ input {
     all: unset;
 }
 
-#About-Me, #Education, #Contact-Information {
+#Contact-Information {
   padding: 2rem;
 }

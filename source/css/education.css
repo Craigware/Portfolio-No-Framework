@@ -19,3 +19,9 @@
     margin: 0.5rem 2rem;
     list-style:circle;
 }
+
+@media screen and (max-width: 1300px) {
+    #Education .educations {
+        grid-template-columns: 100%;
+    }
+}

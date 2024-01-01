@@ -27,10 +27,15 @@
 
 #World-Settings {
     position: absolute;
-    right: 3rem;
-    top: 2rem;
+    right: 3%;
+    top: 3%;
     width: 20%;
     text-align: center;
+}
+
+@media screen and (min-width: 1300){
+    #World-Settings {
+    }
 }
 
 #World-Settings input[type="range"] {
@@ -71,6 +76,12 @@
     padding: 2rem;
     border-radius: 2rem;
     background-color: var(--highlight_color);
+}
+
+@media screen and (max-width: 1300px) {
+    #Ball-Creation {
+        visibility: hidden;
+    }
 }
 
 #Ball-Creation h2 {
