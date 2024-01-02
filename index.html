@@ -9,16 +9,12 @@
 </head>
 <body>
   <main>
-    <!-- <div class="webpage-in-development">
-      <p><span>[Warning]</span> This webpage is in development. A lot of components have no CSS styling and do not have responsive layouts yet.</p>
-      <div class="warning-x-button"></div>
-    </div> -->
     <nav id="Navigation">
       <a href="#Top" class="navbar-item">Top</a>
       <a href="#About-Me" class="navbar-item">About-Me</a>
       <a href="#Projects" class="navbar-item">Projects</a>
       <a href="#Education" class="navbar-item">Education</a>
-      <a href="#Resume" class="navbar-item">Resume</a>
+      <a href="#Resume" class="navbar-item resume-related">Resume</a>
       <a href="#Contact-Information" class="navbar-item">Contact Information</a>
       <div class="socials">
         <a target="_blank" href="https://www.github.com/Craigware" class="navbar-item navbar-logo"><img alt="Github Logo" src="./source/images/icons/github-mark-white.svg"/></a>
@@ -39,7 +35,7 @@
           <label for="Gravity">Gravity</label>
           <input id="Gravity" type="range" min="0" max="100" value="30"/>
           
-          <label for="Wind-Strength">Wind Strength</label>
+          <label for="Wind-Strength">Wind Direction</label>
           <input id="Wind-Strength" type="range" min="-100" max="100" value="0"/>
         </form>
 
@@ -73,7 +69,7 @@
     <div id="About-Me">
       <div class="card-container">
         <div class="header-options">
-          <h1 class="option" value="default">#About-Me</h1>
+          <h1 class="option" value="default">About-Me</h1>
 
             <h3 class="option" value="technical-skills">Technical Skills</h3>
             <h3 class="option" value="soft-skills">Soft Skills</h3>
@@ -83,12 +79,10 @@
         </div>
 
         <div class="content">
-          <div style="
-            display: grid;
-            grid-template-columns: 80% 20%;
-            place-items: center;
-            padding: 10px;
-          ">
+          <div class="about-me">
+            <div class="image-container">
+            <img src=".\source\images\me_but_different.jpg" />
+            </div>
             <p>
               I am an artist turned web developer. I started taking coding more
               seriously when I was in college because I wanted to make my artwork interactive. Front-end development and
@@ -102,9 +96,7 @@
               Although I do love learning different technologies, I currently have specific interest in learning ASP.NET due to C# being
               my favorite programming language. 
             </p>
-            <div class="image-container">
-              <img src=".\source\images\me_but_different.jpg" />
-            </div>
+
           </div>
         </div>
       </div>
@@ -252,7 +244,7 @@
       </div>
     </div>
 
-    <div id="Resume">
+    <div id="Resume" class="resume-related">
       <div id="Resume-Grid" class="grid">
       </div>
       <iframe src="./source/images/Craig Resume.pdf" width="80%" height="1130px"></iframe>

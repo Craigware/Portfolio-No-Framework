@@ -6,6 +6,13 @@
     overflow: hidden;
 }
 
+@media screen and (max-width: 1300px) {
+    .resume-related {
+        display: none !important;
+        visibility: hidden;
+    }
+}
+
 #Resume iframe {
     padding: 1rem 0;
     position: inherit;

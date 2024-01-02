@@ -10,15 +10,15 @@
 }
 
 #Hero .self-introduction {
-    display: inline; 
     margin: 0;
     font-size: 24px;
-    bottom: 70%;
-    right: 58%;
+    bottom: 50%;
+    right: 50%;
 }
 
 #Hero .self-introduction span {
     background-color: var(--highlight_color);
+    padding: 0 1rem;
 }
 
 #Hero label {
@@ -27,14 +27,44 @@
 
 #World-Settings {
     position: absolute;
-    right: 3%;
-    top: 3%;
-    width: 20%;
+    right: 15%;
+    top: 0%;
+    width: 25%;
+    transform: translate(50%, 50%);
     text-align: center;
 }
 
-@media screen and (min-width: 1300){
+#Ball-Creation {
+    position: absolute;
+    transform: translate(50%, 50%);
+    right: 15%;
+    bottom: 50%;
+    width: 22%;
+    padding: 2rem;
+    border-radius: 2rem;
+    background-color: var(--highlight_color);
+}
+
+@media screen and (max-width: 1300px){
     #World-Settings {
+        right: 50%;
+        width: 80%;
+    }
+
+    #Hero .self-introduction {
+        text-align: center;
+        right: 50%;
+        bottom: 80%;
+        width: 90%;
+        top: 25%;
+        transform: translate(50%, 50%);
+    } 
+    #Hero .self-introduction h1:last-child {
+        margin-top: 3rem;
+    }
+
+    #Ball-Creation {
+        visibility: hidden;
     }
 }
 
@@ -54,6 +84,16 @@
     height: 1.5rem;
 }
 
+#Hero input[type="range"]::-moz-range-track {
+    -webkit-appearance: none;
+    box-shadow: inset 0px 0px 8px var(--shadow_color);
+    background-color: var(--background_color);
+    border-radius: 2rem;
+    border-top: 1px solid rgb(76, 141, 163);
+    border-right: 1px solid rgb(76, 141, 163);
+    height: 1.5rem;
+}
+
 #Hero input[type="range"]::-webkit-slider-thumb {
     -webkit-appearance: none;
     height: 1.5rem;
@@ -64,24 +104,11 @@
 }
 
 #Hero input[type="range"]::-moz-slider-thumb {
-    height: 2rem;
-    width: 2rem;
-}
-
-#Ball-Creation {
-    position: absolute;
-    right: 3rem;
-    bottom: 20%;
-    width: 17%;
-    padding: 2rem;
-    border-radius: 2rem;
-    background-color: var(--highlight_color);
-}
-
-@media screen and (max-width: 1300px) {
-    #Ball-Creation {
-        visibility: hidden;
-    }
+    -webkit-appearance: none;
+    height: 1.5rem;
+    border-radius: 100%;
+    width: 1.5rem;
+    background-color: black;
 }
 
 #Ball-Creation h2 {
